@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Llistat de Hotels</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Llistat dels nostres hotels:</h1>
+        
+        <table class="hotel-list">
+
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Adreça</th>
+                <th>Ciutat</th>
+                <th>Categoria</th>
+
+
+
+            </tr>
+
+
+
+        <tr th:each="hotel : ${hotels}">
+            <td th:text="${hotel.id}"></td>
+            <td th:text="${hotel.nom}"></td>
+            <td th:text="${hotel.adreca}"></td>
+            <td th:text="${hotel.ciutat}"></td>
+            <td th:text="${hotel.categoria.nom}"></td>
+        
+        
+        </tr>     
+
+        </table>
+            
+        
+    </div>
+</body>
+</html>
