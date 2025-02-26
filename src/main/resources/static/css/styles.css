@@ -42,23 +42,46 @@ h1 {
     margin-top: 20px;
 }
 
-.hotel-list th, 
-.hotel-list td {
+/*
+.habitacions-list th, 
+.habitacions-list td {
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
 
-.hotel-list th {
+.habitacions-list th {
     background: #007bff;
     color: white;
 }
 
-.hotel-list tr:nth-child(even) {
+.habitacions-list tr:nth-child(even) {
     background: #f9f9f9;
 }
 
-.hotel-list tr:hover {
+.habitacions-list tr:hover {
     background: #e0e0e0;
     transition: background 0.3s ease;
 }
+
+.habitacions-list th, 
+.habitacions-list td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.habitacions-list th {
+    background: #007bff;
+    color: white;
+}
+
+.habitacions-list tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+.habitacions-list tr:hover {
+    background: #e0e0e0;
+    transition: background 0.3s ease;
+}
+    */

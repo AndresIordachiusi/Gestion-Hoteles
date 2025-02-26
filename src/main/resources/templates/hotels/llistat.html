@@ -17,7 +17,7 @@
                 <th>Adreça</th>
                 <th>Ciutat</th>
                 <th>Categoria</th>
-
+                <th>Habitacions</th>
 
 
             </tr>
@@ -30,8 +30,10 @@
             <td th:text="${hotel.adreca}"></td>
             <td th:text="${hotel.ciutat}"></td>
             <td th:text="${hotel.categoria.nom}"></td>
-        
-        
+            <td>
+                <a th:href="@{/hotels/{id}(id=${hotel.id})}">Veure habitacions</a>
+                </td>
+
         </tr>     
 
         </table>

@@ -1,12 +1,16 @@
 package com.hotel.hotel.model;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -33,11 +37,17 @@ public class Hotel {
     private Categoria categoria;
 
 
+
+    @OneToMany(mappedBy = "hotel")
+    private List<Habitacio> habitacions;
+
     public Hotel() {
+        this.habitacions = new ArrayList<>();
     }
 
 
     public Hotel(String nom, String adreca, String ciutat, Categoria categoria) {
+        this.habitacions = new ArrayList<>();
         this.nom = nom;
         this.adreca = adreca;
         this.ciutat = ciutat;
@@ -84,6 +94,16 @@ public class Hotel {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+
+    public List<Habitacio> getHabitacions() {
+        return habitacions;
+    }
+
+
+    public void setHabitacions(List<Habitacio> habitacions) {
+        this.habitacions = habitacions;
     }
 
 
