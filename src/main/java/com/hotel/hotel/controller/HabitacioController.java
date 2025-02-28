@@ -14,6 +14,7 @@ import com.hotel.hotel.model.*;
 import com.hotel.hotel.repository.HabitacioRepository;
 
 
+
 @Controller
 public class HabitacioController {
 
@@ -25,7 +26,7 @@ public class HabitacioController {
        this.habitacioRepository = habitacioRepository;
    }
 
-
+/* 
    @GetMapping("/habitacions")
    public String mostarhabitacions(Model model) {
        List<Habitacio> habitacions = habitacioRepository.findAll();
@@ -40,6 +41,6 @@ public class HabitacioController {
        model.addAttribute("habitacions", habitacions);
        return "habitacions/llistat";
    }
-
+*/
 
 }

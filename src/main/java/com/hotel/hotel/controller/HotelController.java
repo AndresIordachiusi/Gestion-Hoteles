@@ -2,14 +2,17 @@ package com.hotel.hotel.controller;
 
 import java.util.List;
 
+import java.util.Optional;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-//import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PathVariable;
 
-//import com.hotel.hotel.model.Habitacio;
+import com.hotel.hotel.model.Habitacio;
 import com.hotel.hotel.model.Hotel;
 import com.hotel.hotel.repository.HotelRepository;
+
 
 @Controller
 public class HotelController {
@@ -29,6 +32,19 @@ public class HotelController {
     }
 
 
-    
+    @GetMapping("/hotels/{id}")
+    public String infohotel(@PathVariable Long id, Model model) {
+        Optional<Hotel> opt = this.hotelRepository.findById(id);
+        if (opt.isPresent()) {
+            Hotel h = opt.get();
+            model.addAttribute("hotel", h);
+            List<Habitacio> habitacions = h.getHabitacions();
+            model.addAttribute("habitacions", habitacions);
+            return "habitacions/llistat";
+
+        }
+
+        return "error";     
+    }    
 
 }
