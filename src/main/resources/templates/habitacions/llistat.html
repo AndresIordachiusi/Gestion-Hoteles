@@ -9,7 +9,7 @@
     <div class="container">
         <h1>Llistat dels nostres hotels:</h1>
         
-        <table>
+        <table class="habitacions-list">
 
             <tr>
                 <th>ID</th>
@@ -20,7 +20,7 @@
                 <th>Estat</th>
                 <th>PreuNitAD</th>
                 <th>PreuNitMP</th>
-
+                <th>Hotel</th>
             </tr>
         
 
@@ -34,6 +34,7 @@
             <td th:text="${habita.estat}"></td>
             <td th:text="${habita.preuNitAD}"></td>
             <td th:text="${habita.preuNitMP}"></td>
+            <td th:text="${habita.hotel.nom}"></td>
         </tr>     
 
         </table>

@@ -31,7 +31,7 @@
             <td th:text="${hotel.ciutat}"></td>
             <td th:text="${hotel.categoria.nom}"></td>
             <td>
-                <a th:href="@{/hotels/{id}(id=${hotel.id})}">Veure habitacions</a>
+                <a th:href="@{/habitacions/{idhotel}(idhotel=${hotel.id})}">Veure habitacions</a>
                 </td>
 
         </tr>     
