@@ -1,3 +1,5 @@
+DELETE FROM clients;
+DELETE FROM empleats;
 DELETE FROM habitacions;
 DELETE FROM hotels;
 DELETE FROM categories;
@@ -54,3 +56,24 @@ INSERT INTO habitacions (numero, capacitat, descripcio, tipus, estat, preunitad,
 (310, 2, 'Habitación doble estándar con aire acondicionado', 'DOBLE', 'DISPONIBLE', 80.00, 60.00, 3);
 
 
+INSERT INTO clients (id, adreça, cognom, data_naixement, document_identitat, email, nom, telefon, data_registre, targeta_credit, tipus)
+VALUES
+(1, 'Carrer Major 123, Barcelona', 'Garcia', '1980-05-15', '12345678A', 'garcia@gmail.com', 'Joan', '612345678', '2023-10-26', '675478984', 'REGULAR'),
+(2, 'Avinguda Diagonal 45, Girona', 'Martinez', '1975-12-01', '98765432B', 'martinez@gmail.com', 'Maria', '698765432', '2023-10-26', '975481675', 'VIP'),
+(3, 'Plaça Catalunya 10, Tarragona', 'Lopez', '1992-08-20', '56789012C', 'pere@gmail.com', 'Pere', '656789012', '2023-10-26', '637814975', 'PREMIUM'),
+(4, 'Rambla Nova 22, Lleida', 'Sanchez', '1988-03-10', '01234567D', 'anna@gmail.com', 'Anna', '601234567', '2023-10-26', '32487946', 'REGULAR'),
+(5, 'Gran Via 30, Manresa', 'Perez', '1970-06-25', '43210987E', 'josep@gmail.com', 'Josep', '643210987', '2023-10-26', '424784915', 'VIP');
+
+
+INSERT INTO empleats (id, adreça, cognom, data_naixement, document_identitat, email, nom, telefon, data_contractacio, estat, lloc_feina, salari_brut)
+VALUES
+(1, 'Carrer Nou 1, Barcelona', 'Vazquez', '1990-01-15', '12345678A', 'vazquez@gmail.com', 'Lucas', '612345678', '2020-03-01', 'ACTIU', 'Recepcionista', 30000),
+(2, 'Avinguda Gran 2, Girona', 'Camavinga', '1985-06-22', '98765432B', 'camavinga@gmail.com', 'Eduardo', '698765432', '2019-09-15', 'ACTIU', 'Cambrer', 28000),
+(3, 'Plaça Central 3, Tarragona', 'Mendy', '1995-11-10', '56789012C', 'mendy@gmail.com', 'Ferland', '656789012', '2021-01-05', 'PERMIS', 'Conserge', 32000),
+(4, 'Rambla Vella 4, Lleida', 'Diaz', '1982-04-03', '01234567D', 'diaz@gmail.com', 'Brahim', '601234567', '2018-11-20', 'ACTIU', 'Gerent', 45000),
+(5, 'Gran Via 5, Manresa', 'Courtois', '1978-09-18', '43210987E', 'courtois@gmail.com', 'Thibaut', '643210987', '2017-07-10', 'BAIXA', 'Comptable', 35000),
+(6, 'Carrer Estret 6, Vic', 'Rodriguez', '1998-02-28', '87654321F', 'rodriguez@gmail.com', 'Laura', '687654321', '2022-05-01', 'ACTIU', 'Manteniment', 29000),
+(7, 'Avinguda Ampla 7, Igualada', 'Gonzalez', '1987-07-05', '21098765G', 'gonzalez@gmail.com', 'David', '621098765', '2020-12-15', 'ACTIU', 'Cuiner', 27000),
+(8, 'Plaça Petita 8, Olot', 'Fernandez', '1993-12-08', '65432109H', 'fernandez@gmail.com', 'Silvia', '665432109', '2021-08-01', 'PERMIS', 'Administratiu', 25000),
+(9, 'Rambla Ampla 9, Reus', 'Ruiz', '1980-05-12', '98765432I', 'ruiz@gmail.com', 'Carlos', '698765432', '2019-05-20', 'ACTIU', 'Venedor', 26000),
+(10, 'Gran Avinguda 10, Mataró', 'Jimenez', '1975-10-25', '32109876J', 'jimenez@gmail.com', 'Isabel', '632109876', '2018-02-10', 'BAIXA', 'Jardiner', 38000);

@@ -2,9 +2,14 @@ package com.hotel.hotel.model;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.Table;
 
+
+@Entity
+@Table(name = "empleats")
 public class Empleat extends Persona{
     
     private int id;
@@ -31,6 +36,54 @@ public class Empleat extends Persona{
         this.llocFeina = llocFeina;
         this.data_contractacio = data_contractacio;
         this.salariBrut = salariBrut;
+        this.estat = estat;
+    }
+
+
+
+    public String getLlocFeina() {
+        return llocFeina;
+    }
+
+
+
+    public void setLlocFeina(String llocFeina) {
+        this.llocFeina = llocFeina;
+    }
+
+
+
+    public LocalDate getData_contractacio() {
+        return data_contractacio;
+    }
+
+
+
+    public void setData_contractacio(LocalDate data_contractacio) {
+        this.data_contractacio = data_contractacio;
+    }
+
+
+
+    public double getSalariBrut() {
+        return salariBrut;
+    }
+
+
+
+    public void setSalariBrut(double salariBrut) {
+        this.salariBrut = salariBrut;
+    }
+
+
+
+    public EstatLaboral getEstat() {
+        return estat;
+    }
+
+
+
+    public void setEstat(EstatLaboral estat) {
         this.estat = estat;
     }
     
