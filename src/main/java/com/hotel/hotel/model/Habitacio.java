@@ -1,4 +1,6 @@
 package com.hotel.hotel.model;
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -7,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 // import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -45,11 +48,17 @@ public class Habitacio {
     @JoinColumn(name = "hotel_id", nullable = false)
     private Hotel hotel;
 
+    /* 
+    @ManyToMany
+    private List<Reserva> reserves;
+    */
+
     public Habitacio() {
     }
 
 
-    public Habitacio(int numero, int capacitat, String descripcio, TipusHabitacio tipus, EstatHabitacio estat, double preunitad, double preunitmp, Hotel hotel) {
+    public Habitacio(Long id, int numero, int capacitat, String descripcio, TipusHabitacio tipus, EstatHabitacio estat, double preunitad, double preunitmp, Hotel hotel) {
+        this.id = id;
         this.numero = numero;
         this.capacitat = capacitat;
         this.descripcio = descripcio;

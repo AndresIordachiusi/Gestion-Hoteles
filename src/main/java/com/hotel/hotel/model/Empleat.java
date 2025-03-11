@@ -1,10 +1,12 @@
 package com.hotel.hotel.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 
@@ -25,8 +27,9 @@ public class Empleat extends Persona{
     public Empleat() {
         
     }
-
-
+    
+    @ManyToMany
+    private List<Tasca> tasques;
 
     public Empleat(Long id, String nom, String cognom, String adreça, String document_identitat,
         LocalDate data_naixement, String telefon, String email, int id2, String llocFeina,

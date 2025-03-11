@@ -1,3 +1,4 @@
+DELETE FROM reserves;
 DELETE FROM clients;
 DELETE FROM empleats;
 DELETE FROM habitacions;
@@ -17,43 +18,43 @@ INSERT INTO hotels (id, nom, adreca, ciutat, categoria_id) VALUES (2, 'Hotel Mil
 INSERT INTO hotels (id, nom, adreca, ciutat, categoria_id) VALUES (3, 'Hotel San Viçens', 'Carrer de Bermudes 6', 'Valencia', 3);
 
 
-INSERT INTO habitacions (numero, capacitat, descripcio, tipus, estat, preunitad, preunitmp, hotel_id)
+INSERT INTO habitacions (id, numero, capacitat, descripcio, tipus, estat, preunitad, preunitmp, hotel_id)
  VALUES
-(101, 2, 'Habitación doble con vistas al jardín', 'DOBLE', 'DISPONIBLE', 80.00, 60.00, 1),
-(102, 2, 'Habitación doble con balcón', 'DOBLE', 'DISPONIBLE', 85.00, 65.00, 1),
-(103, 3, 'Habitación triple con terraza', 'SUITE', 'OCUPADA', 100.00, 80.00, 1),
-(104, 1, 'Habitación individual acogedora', 'SIMPLE', 'DISPONIBLE', 60.00, 45.00, 1),
-(105, 2, 'Habitación doble con bañera de hidromasaje', 'DOBLE', 'OCUPADA', 120.00, 100.00, 1),
-(106, 4, 'Suite familiar con sala de estar', 'SUITE', 'DISPONIBLE', 150.00, 130.00, 1),
-(107, 2, 'Habitación doble estándar', 'DOBLE', 'RESERVADA', 75.00, 55.00, 1),
-(108, 1, 'Habitación individual con escritorio', 'SIMPLE', 'DISPONIBLE', 65.00, 50.00, 1),
-(109, 3, 'Habitación triple con vistas a la piscina', 'SUITE', 'DISPONIBLE', 110.00, 90.00, 1),
-(110, 2, 'Habitación doble superior con balcón', 'DOBLE', 'DISPONIBLE', 95.00, 75.00, 1),
+(1, 101, 2, 'Habitación doble con vistas al jardín', 'DOBLE', 'DISPONIBLE', 80.00, 60.00, 1),
+(2, 102, 2, 'Habitación doble con balcón', 'DOBLE', 'DISPONIBLE', 85.00, 65.00, 1),
+(3, 103, 3, 'Habitación triple con terraza', 'SUITE', 'OCUPADA', 100.00, 80.00, 1),
+(4, 104, 1, 'Habitación individual acogedora', 'SIMPLE', 'DISPONIBLE', 60.00, 45.00, 1),
+(5, 105, 2, 'Habitación doble con bañera de hidromasaje', 'DOBLE', 'OCUPADA', 120.00, 100.00, 1),
+(6, 106, 4, 'Suite familiar con sala de estar', 'SUITE', 'DISPONIBLE', 150.00, 130.00, 1),
+(7, 107, 2, 'Habitación doble estándar', 'DOBLE', 'RESERVADA', 75.00, 55.00, 1),
+(8, 108, 1, 'Habitación individual con escritorio', 'SIMPLE', 'DISPONIBLE', 65.00, 50.00, 1),
+(9, 109, 3, 'Habitación triple con vistas a la piscina', 'SUITE', 'DISPONIBLE', 110.00, 90.00, 1),
+(10, 110, 2, 'Habitación doble superior con balcón', 'DOBLE', 'DISPONIBLE', 95.00, 75.00, 1),
 
 
 
-(201, 2, 'Habitación doble moderna con vista a la ciudad', 'DOBLE', 'DISPONIBLE', 150.00, 130.00, 2),
-(202, 3, 'Habitación triple con terraza privada', 'SUITE', 'DISPONIBLE', 180.00, 160.00, 2),
-(203, 1, 'Habitación individual con diseño minimalista', 'SIMPLE', 'OCUPADA', 100.00, 85.00, 2),
-(204, 4, 'Suite ejecutiva con sala de estar', 'SUITE', 'DISPONIBLE', 250.00, 220.00, 2),
-(205, 2, 'Habitación doble con jacuzzi', 'DOBLE', 'RESERVADA', 200.00, 180.00, 2),
-(206, 3, 'Habitación triple con escritorio y minibar', 'SUITE', 'DISPONIBLE', 175.00, 155.00, 2),
-(207, 2, 'Habitación doble clásica con detalles elegantes', 'DOBLE', 'DISPONIBLE', 160.00, 140.00, 2),
-(208, 1, 'Habitación individual con vistas al parque', 'SIMPLE', 'OCUPADA', 105.00, 90.00, 2),
-(209, 2, 'Habitación doble de lujo con iluminación ambiental', 'DOBLE', 'DISPONIBLE', 190.00, 170.00, 2),
-(210, 4, 'Suite presidencial con terraza y jacuzzi', 'SUITE', 'RESERVADA', 300.00, 270.00, 2),
+(11, 201, 2, 'Habitación doble moderna con vista a la ciudad', 'DOBLE', 'DISPONIBLE', 150.00, 130.00, 2),
+(12, 202, 3, 'Habitación triple con terraza privada', 'SUITE', 'DISPONIBLE', 180.00, 160.00, 2),
+(13, 203, 1, 'Habitación individual con diseño minimalista', 'SIMPLE', 'OCUPADA', 100.00, 85.00, 2),
+(14, 204, 4, 'Suite ejecutiva con sala de estar', 'SUITE', 'DISPONIBLE', 250.00, 220.00, 2),
+(15, 205, 2, 'Habitación doble con jacuzzi', 'DOBLE', 'RESERVADA', 200.00, 180.00, 2),
+(16, 206, 3, 'Habitación triple con escritorio y minibar', 'SUITE', 'DISPONIBLE', 175.00, 155.00, 2),
+(17, 207, 2, 'Habitación doble clásica con detalles elegantes', 'DOBLE', 'DISPONIBLE', 160.00, 140.00, 2),
+(18, 208, 1, 'Habitación individual con vistas al parque', 'SIMPLE', 'OCUPADA', 105.00, 90.00, 2),
+(19, 209, 2, 'Habitación doble de lujo con iluminación ambiental', 'DOBLE', 'DISPONIBLE', 190.00, 170.00, 2),
+(20, 210, 4, 'Suite presidencial con terraza y jacuzzi', 'SUITE', 'RESERVADA', 300.00, 270.00, 2),
 
 
-(301, 1, 'Habitación individual con decoración rústica', 'SIMPLE', 'DISPONIBLE', 55.00, 40.00, 3),
-(302, 2, 'Habitación doble con cama king-size', 'DOBLE', 'DISPONIBLE', 90.00, 70.00, 3),
-(303, 3, 'Habitación triple con balcón privado', 'SUITE', 'OCUPADA', 110.00, 85.00, 3),
-(304, 4, 'Suite familiar con cocina y terraza', 'SUITE', 'DISPONIBLE', 170.00, 140.00, 3),
-(305, 2, 'Habitación doble con baño de mármol', 'DOBLE', 'RESERVADA', 95.00, 75.00, 3),
-(306, 3, 'Habitación triple con vistas al mar', 'SUITE', 'DISPONIBLE', 130.00, 110.00, 3),
-(307, 1, 'Habitación individual con escritorio y wifi gratuito', 'SIMPLE', 'DISPONIBLE', 60.00, 50.00, 3),
-(308, 2, 'Habitación doble con mobiliario clásico', 'DOBLE', 'OCUPADA', 85.00, 65.00, 3),
-(309, 3, 'Habitación triple con decoración moderna', 'SUITE', 'DISPONIBLE', 120.00, 95.00, 3),
-(310, 2, 'Habitación doble estándar con aire acondicionado', 'DOBLE', 'DISPONIBLE', 80.00, 60.00, 3);
+(21, 301, 1, 'Habitación individual con decoración rústica', 'SIMPLE', 'DISPONIBLE', 55.00, 40.00, 3),
+(22, 302, 2, 'Habitación doble con cama king-size', 'DOBLE', 'DISPONIBLE', 90.00, 70.00, 3),
+(23, 303, 3, 'Habitación triple con balcón privado', 'SUITE', 'OCUPADA', 110.00, 85.00, 3),
+(24, 304, 4, 'Suite familiar con cocina y terraza', 'SUITE', 'DISPONIBLE', 170.00, 140.00, 3),
+(25, 305, 2, 'Habitación doble con baño de mármol', 'DOBLE', 'RESERVADA', 95.00, 75.00, 3),
+(26, 306, 3, 'Habitación triple con vistas al mar', 'SUITE', 'DISPONIBLE', 130.00, 110.00, 3),
+(27, 307, 1, 'Habitación individual con escritorio y wifi gratuito', 'SIMPLE', 'DISPONIBLE', 60.00, 50.00, 3),
+(28, 308, 2, 'Habitación doble con mobiliario clásico', 'DOBLE', 'OCUPADA', 85.00, 65.00, 3),
+(29, 309, 3, 'Habitación triple con decoración moderna', 'SUITE', 'DISPONIBLE', 120.00, 95.00, 3),
+(30, 310, 2, 'Habitación doble estándar con aire acondicionado', 'DOBLE', 'DISPONIBLE', 80.00, 60.00, 3);
 
 
 INSERT INTO clients (id, adreça, cognom, data_naixement, document_identitat, email, nom, telefon, data_registre, targeta_credit, tipus)
@@ -77,3 +78,13 @@ VALUES
 (8, 'Plaça Petita 8, Olot', 'Fernandez', '1993-12-08', '65432109H', 'fernandez@gmail.com', 'Silvia', '665432109', '2021-08-01', 'PERMIS', 'Administratiu', 25000),
 (9, 'Rambla Ampla 9, Reus', 'Ruiz', '1980-05-12', '98765432I', 'ruiz@gmail.com', 'Carlos', '698765432', '2019-05-20', 'ACTIU', 'Venedor', 26000),
 (10, 'Gran Avinguda 10, Mataró', 'Jimenez', '1975-10-25', '32109876J', 'jimenez@gmail.com', 'Isabel', '632109876', '2018-02-10', 'BAIXA', 'Jardiner', 38000);
+
+
+
+INSERT INTO reserves (id, data_fi, data_inici, data_reserva, preu_total_reserva, tipus_iva, tipus_reserva, client_id, habitacio_id)
+VALUES
+(1, '2025-03-10', '2025-03-05', '2025-02-20', 300.00, 7, 'AD', 1, 1),
+(2, '2025-04-15', '2025-04-10', '2025-03-01', 850.00, 21, 'MP', 2, 6),
+(3, '2025-05-20', '2025-05-15', '2025-04-05', 400.00, 7, 'AD', 3, 12),
+(4, '2025-06-25', '2025-06-20', '2025-05-10', 700.00, 21, 'MP', 4, 20),
+(5, '2025-07-30', '2025-07-25', '2025-06-15', 500.00, 7, 'AD', 5, 17);

@@ -1,0 +1,1 @@
+SHOW GRANTS FOR 'usuari_admin'@'localhost';
