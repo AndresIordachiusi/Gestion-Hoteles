@@ -1,6 +1,7 @@
 package com.hotel.hotel.model;
 
 import java.sql.Date;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,7 +19,6 @@ import jakarta.persistence.Table;
 public class Tasca {
     
 @Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
 private Long id;
 
 
@@ -36,12 +36,14 @@ private Date data_ejecucio;
 private EstatTasca estat;
 
 
-
+/* 
 @ManyToMany
 @JoinColumn(name = "empleat_id", nullable = false)
 private Empleat empleat;
+*/
 
-
+@ManyToMany(mappedBy = "tasques")
+private List<Empleat> empleats;
 
 
 public Tasca() {

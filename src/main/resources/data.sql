@@ -1,3 +1,5 @@
+DELETE FROM empleats_tasques;
+DELETE FROM tasques;
 DELETE FROM reserves;
 DELETE FROM clients;
 DELETE FROM empleats;
@@ -88,3 +90,16 @@ VALUES
 (3, '2025-05-20', '2025-05-15', '2025-04-05', 400.00, 7, 'AD', 3, 12),
 (4, '2025-06-25', '2025-06-20', '2025-05-10', 700.00, 21, 'MP', 4, 20),
 (5, '2025-07-30', '2025-07-25', '2025-06-15', 500.00, 7, 'AD', 5, 17);
+
+
+
+
+INSERT INTO tasques (id, data_creacio, data_ejecucio, descripcio, estat)
+VALUES
+(1, '2025-03-12', '2025-03-13', 'neteja lavabos', 'PENDENT');
+
+
+INSERT INTO empleats_tasques (empleats_id, tasques_id)
+VALUES
+(1, 1),
+(2, 1);
