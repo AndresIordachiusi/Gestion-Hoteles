@@ -42,12 +42,12 @@ public class CategoriaController {
         return "principal";   
     }
 
-            @GetMapping("/recuperar-cookie")
-            public String home(HttpServletRequest request) {
-            Cookie[] cookies = request.getCookies();
-            System.out.println(cookies[0].getValue());
-            
-                return "principal";
+     @GetMapping("/recuperar-cookie")
+       public String home(HttpServletRequest request) {
+        Cookie[] cookies = request.getCookies();
+        System.out.println(cookies[0].getValue());
+
+        return "principal";
         }
 
 

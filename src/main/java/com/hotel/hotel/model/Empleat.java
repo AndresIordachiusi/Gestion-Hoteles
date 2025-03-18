@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 @Table(name = "empleats")
 public class Empleat extends Persona{
     
-    private int id;
+    private Long id;
     private String llocFeina;
     private LocalDate data_contractacio;
     private double salariBrut;
@@ -35,11 +35,23 @@ public class Empleat extends Persona{
         LocalDate data_naixement, String telefon, String email, int id2, String llocFeina,
         LocalDate data_contractacio, double salariBrut, EstatLaboral estat) {
         super(id, nom, cognom, adreça, document_identitat, data_naixement, telefon, email);
-        this.id = id2;
+        this.id = id;
         this.llocFeina = llocFeina;
         this.data_contractacio = data_contractacio;
         this.salariBrut = salariBrut;
         this.estat = estat;
+    }
+
+
+
+    public Long getId() {
+        return id;
+    }
+
+
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
 

@@ -13,6 +13,8 @@ import com.hotel.hotel.model.Habitacio;
 import com.hotel.hotel.model.Hotel;
 import com.hotel.hotel.repository.HotelRepository;
 
+import jakarta.servlet.http.HttpSession;
+
 
 @Controller
 public class HotelController {
@@ -33,9 +35,11 @@ public class HotelController {
 
 
     @GetMapping("/hotels/{id}")
-    public String infohotel(@PathVariable Long id, Model model) {
+    public String infohotel(@PathVariable Long id, Model model, HttpSession session) {
+
         Optional<Hotel> opt = this.hotelRepository.findById(id);
         if (opt.isPresent()) {
+            session.setAttribute("id_hotel", id);
             Hotel h = opt.get();
             model.addAttribute("hotel", h);
             List<Habitacio> habitacions = h.getHabitacions();

@@ -13,7 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-
+import com.hotel.hotel.model.*;
 @Entity
 @Table(name = "tasques")
 public class Tasca {
@@ -49,13 +49,18 @@ private List<Empleat> empleats;
 public Tasca() {
 }
 
-public Tasca(Long id, String descripcio, Date data_creacio, Date data_ejecucio, EstatTasca estat) {
+public Tasca(Long id, String descripcio, Date data_creacio, Date data_ejecucio, EstatTasca estat, List<Empleat> empleats) {
     this.id = id;
     this.descripcio = descripcio;
     this.data_creacio = data_creacio;
     this.data_ejecucio = data_ejecucio;
     this.estat = estat;
+    this.empleats = empleats;
 }
+
+
+
+
 
 public Long getId() {
     return id;
@@ -95,6 +100,14 @@ public EstatTasca getEstat() {
 
 public void setEstat(EstatTasca estat) {
     this.estat = estat;
+}
+
+public List<Empleat> getEmpleats() {
+    return empleats;
+}
+
+public void setEmpleats(List<Empleat> empleats) {
+    this.empleats = empleats;
 }
 
 

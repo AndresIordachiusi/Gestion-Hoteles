@@ -19,7 +19,7 @@ public class Factura {
 
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)   
-private long id;
+private Long id;
 
 
 @Column(nullable = false)

@@ -127,3 +127,57 @@ h1 {
     background: #e0e0e0;
     transition: background 0.3s ease;
 }
+
+
+
+
+
+
+.empleats-list {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+
+.empleats-list th, 
+.empleats-list td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.empleats-list th {
+    background: #007bff;
+    color: white;
+}
+
+.empleats-list tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+.empleats-list tr:hover {
+    background: #e0e0e0;
+    transition: background 0.3s ease;
+}
+
+.empleats-list th, 
+.empleats-list td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.empleats-list th {
+    background: #007bff;
+    color: white;
+}
+
+.empleats-list tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+.empleats-list tr:hover {
+    background: #e0e0e0;
+    transition: background 0.3s ease;
+}
