@@ -1,48 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Llistat Empleats</title>
-    <link rel="stylesheet" th:href="@{/css/styles.css}">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Empleats</title>
+   <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
 
-
-
     <div class="container">
-        <h1>Els nostres Empleats:</h1>
-        
-        <table class="empleats-list">
-
-            <tr>
-                <th>ID</th>
-                <th>Nom</th>
-                <th>Cognom</th>
-
-
-            </tr>
-
-
-
-            <tr th:each="tasca : ${tasques}">
-                 
-                <td>
-
-
-                    <ul>
-                        <li th:each ="empleat : ${tasca.empleats}" th:text="${empleat.nom}"></li>
-                    </ul>
-                </td>
-            </tr>   
-
-      
-
-
-        </table>
-            
-        
-    </div>
+    <table class="empleats-list">       
+           <tr>
+               <th>Nom<th>
+               <th>Cognom</th>
+               <th>Lloc Feina</th>
+           </tr>
     
+
+           <tr th:each="emp : ${empleats}">
+            <td th:text="${emp.getId}"></td>
+               <td th:text="${emp.getNom}"></td>
+               <td th:text="${emp.getCognom}"></td>
+               <td th:text="${emp.getLlocFeina}"></td>
+           </tr>
+    
+
+
+   </table>
+
+</div>
+  </div>
+  
 </body>
 </html>

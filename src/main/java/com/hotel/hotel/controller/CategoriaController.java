@@ -30,6 +30,15 @@ public class CategoriaController {
         return "categoria/llistat"; 
     }
 
+
+    @GetMapping("/desar-categoria")
+    public String desar(){
+        Categoria c = new Categoria();
+        c.setNom("Categoria nova");
+        categoriaRepository.save(c);
+        return "redirect:/categories";
+    }
+
     @GetMapping("/crear-cookie")
     public String setCookie(HttpServletResponse response) {
         // Crear i afegir una cookie

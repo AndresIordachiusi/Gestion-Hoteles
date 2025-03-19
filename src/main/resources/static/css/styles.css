@@ -181,3 +181,106 @@ h1 {
     background: #e0e0e0;
     transition: background 0.3s ease;
 }
+
+
+
+.tasques-list {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+
+.tasques-list th, 
+.tasques-list td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.tasques-list th {
+    background: #007bff;
+    color: white;
+}
+
+.tasques-list tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+.tasques-list tr:hover {
+    background: #e0e0e0;
+    transition: background 0.3s ease;
+}
+
+.tasques-list th, 
+.tasques-list td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.tasques-list th {
+    background: #007bff;
+    color: white;
+}
+
+.tasques-list tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+.tasques-list tr:hover {
+    background: #e0e0e0;
+    transition: background 0.3s ease;
+}
+
+
+
+
+.reserves-list {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+
+.reserves-list th, 
+.reserves-list td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.reserves-list th {
+    background: #007bff;
+    color: white;
+}
+
+.reserves-list tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+.reserves-list tr:hover {
+    background: #e0e0e0;
+    transition: background 0.3s ease;
+}
+
+.reserves-list th, 
+.reserves-list td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.reserves-list th {
+    background: #007bff;
+    color: white;
+}
+
+.reserves-list tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+.reserves-list tr:hover {
+    background: #e0e0e0;
+    transition: background 0.3s ease;
+}

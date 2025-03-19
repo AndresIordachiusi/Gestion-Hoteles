@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Reserves</title>
+   <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Reserves</h1>
+    <table class="reserves-list"> 
+        <thead>    
+           <tr>
+               <th>Id</th>
+               <th>Data Reserva</th>
+               <th>Data inici</th>
+               <th>Data Fi</th>
+               <th>Tipus reserva</th>
+           </tr>
+    </thead>  
+
+           <tr th:each="reserva: ${reserves}">
+               <td th:text="${reserva.getId}"></td>    
+               <td th:text="${reserva.getData_reserva}"></td>
+               <td th:text="${reserva.getData_inici}"></td>
+               <td th:text="${reserva.getData_fi}"></td>
+               <td th:text="${reserva.getTipus_reserva}"></td>
+           </tr>
+    
+
+
+   </table>
+
+</div>
+    
+</body>
+</html>

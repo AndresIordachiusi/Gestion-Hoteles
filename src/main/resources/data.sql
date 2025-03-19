@@ -96,10 +96,18 @@ VALUES
 
 INSERT INTO tasques (id, data_creacio, data_ejecucio, descripcio, estat)
 VALUES
-(1, '2025-03-12', '2025-03-13', 'neteja lavabos', 'PENDENT');
-
+(1, '2025-03-12', '2025-03-13', 'Neteja lavabos', 'PENDENT'),
+(2, '2025-03-18', '2025-03-19', 'Revisión del sistema de climatización', 'COMPLETADA'),
+(3, '2025-03-21', '2025-04-23', 'Reparación de cerraduras en habitaciones', 'EN_PROGRÉS'),
+(4, '2025-05-19', '2025-06-21', 'Inventario de suministros de limpieza', 'COMPLETADA'),
+(5, '2025-06-22', '2025-07-24', 'Mantenimiento del ascensor principal', 'PENDENT');
 
 INSERT INTO empleats_tasques (empleats_id, tasques_id)
 VALUES
 (1, 1),
-(2, 1);
+(2, 1),
+(3, 2),
+(4, 5),
+(5, 5),
+(1, 3),
+(10, 4);

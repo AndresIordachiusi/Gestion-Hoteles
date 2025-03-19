@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Tasques</title>
+   <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+
+   <div class="container">
+       <table class="tasques-list">
+           <thead>
+               <tr>
+                   <th>Descripció</th>
+                   <th>Data Creacio</th>
+                   <th>Data ejecució</th>
+                   <th>Estat</th>
+                   <th>Empleats</th>
+               </tr>
+           </thead>
+           <tbody>
+               <tr th:each="tasca : ${tasques}">
+                
+                   <td th:text="${tasca.getDescripcio}"></td>
+                   <td th:text="${tasca.getData_creacio}"></td>
+                   <td th:text="${tasca.getData_ejecucio}"></td>
+                   <td th:text="${tasca.getEstat}"></td>
+
+
+                   <td>
+                       <ul>
+                           <li th:each ="empleats : ${tasca.empleats}" th:text="${empleats.nom}"></li>
+                       </ul>
+                   </td>
+                  
+               </tr>
+           </tbody>
+       </table>
+   </div>
+  
+</body>
+</html>

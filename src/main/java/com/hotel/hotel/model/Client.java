@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 @Table(name = "clients")
 public class Client extends Persona {
     
-    private int id;
+    private Long id;
     private LocalDate data_registre;
 
 
@@ -29,7 +29,7 @@ public class Client extends Persona {
 
     
     public Client(Long id, String nom, String cognom, String adreça, String document_identitat,
-        LocalDate data_naixement, String telefon, String email, int id2, LocalDate data_registre,
+        LocalDate data_naixement, String telefon, String email, Long id2, LocalDate data_registre,
         CategoriaClient tipus, int targeta_credit) {
         super(id, nom, cognom, adreça, document_identitat, data_naixement, telefon, email);
         this.id = id2;
@@ -66,6 +66,16 @@ public class Client extends Persona {
 
     public void setTargeta_credit(int targeta_credit) {
         this.targeta_credit = targeta_credit;
+    }
+
+
+    public Long getId() {
+        return id;
+    }
+
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
 
