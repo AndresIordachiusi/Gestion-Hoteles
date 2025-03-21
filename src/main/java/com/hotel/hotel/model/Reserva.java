@@ -11,8 +11,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-
+import com.hotel.hotel.model.*;
 
 @Entity
 @Table(name = "reserves")
@@ -50,11 +52,15 @@ private Client client;
 private Habitacio habitacio;
 
 
+//@OneToOne
+//@JoinColumn(name = "factura_id", nullable = false)
+//private Factura factura;
+
 public Reserva() {
 }
 
 public Reserva(Long id, Date data_reserva, Date data_inici, Date data_fi, TipusReserva tipus_reserva, int tipus_iva,
-        double preu_total_reserva) {
+        double preu_total_reserva, Client client, Habitacio habitacio) {
     this.id = id;
     this.data_reserva = data_reserva;
     this.data_inici = data_inici;
@@ -62,6 +68,9 @@ public Reserva(Long id, Date data_reserva, Date data_inici, Date data_fi, TipusR
     this.tipus_reserva = tipus_reserva;
     this.tipus_iva = tipus_iva;
     this.preu_total_reserva = preu_total_reserva;
+    this.client = client;
+    this.habitacio = habitacio;
+    //this.factura = factura;
 }
 
 public Long getId() {
@@ -120,6 +129,30 @@ public void setPreu_total_reserva(double preu_total_reserva) {
     this.preu_total_reserva = preu_total_reserva;
 }
 
+public Client getClient() {
+    return client;
+}
+
+public void setClient(Client client) {
+    this.client = client;
+}
+
+public Habitacio getHabitacio() {
+    return habitacio;
+}
+
+public void setHabitacio(Habitacio habitacio) {
+    this.habitacio = habitacio;
+}
+/* 
+public Factura getFactura() {
+    return factura;
+}
+
+public void setFactura(Factura factura) {
+    this.factura = factura;
+}
+*/
 
 
 

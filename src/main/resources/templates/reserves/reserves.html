@@ -18,6 +18,8 @@
                <th>Data inici</th>
                <th>Data Fi</th>
                <th>Tipus reserva</th>
+               <th>ID Client</th>
+               <th>ID Habitacio</th>
            </tr>
     </thead>  
 
@@ -27,6 +29,8 @@
                <td th:text="${reserva.getData_inici}"></td>
                <td th:text="${reserva.getData_fi}"></td>
                <td th:text="${reserva.getTipus_reserva}"></td>
+               <td th:text="${reserva.client.id}"></td>
+               <td th:text="${reserva.habitacio.id}"></td>
            </tr>
     
 

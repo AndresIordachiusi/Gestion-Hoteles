@@ -1,10 +1,12 @@
 package com.hotel.hotel.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,6 +25,10 @@ public class Client extends Persona {
     
     private int targeta_credit;
 
+    @OneToMany(mappedBy = "client")
+    private List<Reserva> reserves;
+
+
     public Client() {
         
     }
@@ -30,12 +36,13 @@ public class Client extends Persona {
     
     public Client(Long id, String nom, String cognom, String adreça, String document_identitat,
         LocalDate data_naixement, String telefon, String email, Long id2, LocalDate data_registre,
-        CategoriaClient tipus, int targeta_credit) {
+        CategoriaClient tipus, int targeta_credit, List<Reserva> reserves) {
         super(id, nom, cognom, adreça, document_identitat, data_naixement, telefon, email);
         this.id = id2;
         this.data_registre = data_registre;
         this.tipus = tipus;
         this.targeta_credit = targeta_credit;
+        this.reserves = reserves;
     }
 
 
@@ -76,6 +83,16 @@ public class Client extends Persona {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+
+    public List<Reserva> getReserves() {
+        return reserves;
+    }
+
+
+    public void setReserves(List<Reserva> reserves) {
+        this.reserves = reserves;
     }
 
 

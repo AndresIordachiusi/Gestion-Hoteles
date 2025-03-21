@@ -9,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 
@@ -22,7 +24,7 @@ public class Factura {
 private Long id;
 
 
-@Column(nullable = false)
+@Column(nullable = false)  
 private LocalDate data_emisio;
 
 
@@ -42,6 +44,11 @@ private double iva;
 private double total;
 
 
+
+//@OneToOne
+//@JoinColumn(name = "reserva_id", nullable = false)
+//private Reserva reserva;
+
 public Factura() {
 }
 
@@ -54,6 +61,7 @@ public Factura(Long id, LocalDate data_emisio, String metode_pagament, double ba
    this.base_imposable = base_imposable;
    this.iva = iva;
    this.total = total;
+  // this.reserva = reserva;
 }
 
 
@@ -115,6 +123,18 @@ public double getTotal() {
 public void setTotal(double total) {
    this.total = total;
 }
+
+/* 
+public Reserva getReserva() {
+   return reserva;
+}
+
+
+public void setReserva(Reserva reserva) {
+   this.reserva = reserva;
+}
+
+*/
 
 
 }
