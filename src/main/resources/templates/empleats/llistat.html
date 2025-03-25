@@ -11,9 +11,11 @@
     <div class="container">
     <table class="empleats-list">       
            <tr>
-               <th>Nom<th>
+                <th>Id</th>
+               <th>Nom</th>
                <th>Cognom</th>
                <th>Lloc Feina</th>
+               <th>Estat</th>
            </tr>
     
 
@@ -22,6 +24,7 @@
                <td th:text="${emp.getNom}"></td>
                <td th:text="${emp.getCognom}"></td>
                <td th:text="${emp.getLlocFeina}"></td>
+               <td th:text="${emp.getEstat}"></td>
            </tr>
     
 

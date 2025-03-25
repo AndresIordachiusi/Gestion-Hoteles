@@ -22,7 +22,7 @@ public abstract class Persona {
 
 
 @Id
-@GeneratedValue
+@GeneratedValue(strategy = GenerationType.AUTO)
 private Long id;    
 
 private String nom;

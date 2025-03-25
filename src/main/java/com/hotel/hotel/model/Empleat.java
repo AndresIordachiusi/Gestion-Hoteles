@@ -13,8 +13,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "empleats")
 public class Empleat extends Persona{
-    
-    private Long id;
+
     private String llocFeina;
     private LocalDate data_contractacio;
     private double salariBrut;
@@ -32,10 +31,9 @@ public class Empleat extends Persona{
     private List<Tasca> tasques;
 
     public Empleat(Long id, String nom, String cognom, String adreça, String document_identitat,
-        LocalDate data_naixement, String telefon, String email, int id2, String llocFeina,
+        LocalDate data_naixement, String telefon, String email, String llocFeina,
         LocalDate data_contractacio, double salariBrut, EstatLaboral estat) {
         super(id, nom, cognom, adreça, document_identitat, data_naixement, telefon, email);
-        this.id = id;
         this.llocFeina = llocFeina;
         this.data_contractacio = data_contractacio;
         this.salariBrut = salariBrut;
@@ -43,16 +41,6 @@ public class Empleat extends Persona{
     }
 
 
-
-    public Long getId() {
-        return id;
-    }
-
-
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
 
 
@@ -100,6 +88,22 @@ public class Empleat extends Persona{
 
     public void setEstat(EstatLaboral estat) {
         this.estat = estat;
+    }
+
+
+
+
+
+    public List<Tasca> getTasques() {
+        return tasques;
+    }
+
+
+
+
+
+    public void setTasques(List<Tasca> tasques) {
+        this.tasques = tasques;
     }
     
 
