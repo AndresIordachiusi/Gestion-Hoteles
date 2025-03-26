@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import org.springframework.ui.Model;
 import com.hotel.hotel.model.*;
+import com.hotel.hotel.repository.ClientsRepository;
 import com.hotel.hotel.repository.EmpleatsRepository;
 import com.hotel.hotel.repository.TascaRepository;
+import com.hotel.hotel.repository.UsuariRepository;
 
 
 
@@ -19,11 +21,14 @@ public class FormulariController {
 
     private EmpleatsRepository empleatsRepository;
     private TascaRepository tascaRepository;
-    
+    private ClientsRepository ClientsRepository;
+    private UsuariRepository usuarisRepository;
 
-    public FormulariController(EmpleatsRepository empleatsRepository, TascaRepository tascaRepository) {
+    public FormulariController(EmpleatsRepository empleatsRepository, TascaRepository tascaRepository, ClientsRepository ClientsRepository, UsuariRepository usuarisRepository) {
         this.empleatsRepository = empleatsRepository;
         this.tascaRepository = tascaRepository;
+        this.ClientsRepository = ClientsRepository;
+        this.usuarisRepository = usuarisRepository;
     }
 
     @GetMapping("/formulari")
@@ -60,6 +65,12 @@ public class FormulariController {
     }
 
 
-
+    @GetMapping("/altaclient")
+    public String registreClient(Model model) {
+        List<Usuari> usuaris  = usuarisRepository.findAll();
+        model.addAttribute("usuaris", usuaris); 
+        model.addAttribute("client", new Client());
+        return "FORMULARIS/altaClient";
+    }   
 
 }

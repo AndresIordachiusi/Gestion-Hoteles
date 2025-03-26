@@ -3,9 +3,12 @@
 <head>
    <meta charset="UTF-8">
    <title>Alta Empleat</title>
+   <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
    <h2>Donar d'Alta Empleat</h2>
+
+   <div class="altaempleat">
    <form th:action="@{/registrarEmpleat}" method="post" th:object="${empleat}">
       
        <label>Nom:</label>
@@ -67,6 +70,7 @@
        
     <a th:href="@{/empleats/llistat}"><button type="submit">Donar alta empleat</button></a>
    </form>
+</div>
 </body>
 </html>
 

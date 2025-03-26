@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <meta charset="UTF-8">
+   <title>Alta Empleat</title>
+   <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+   <h2>Donar d'Alta Empleat</h2>
+
+   <div class="altaempleat">
+   <form th:action="@{/registreClient}" method="post" th:object="${empleat}">
+      
+       <label>Nom:</label>
+       <input type="text" th:field="*{nom}" required><br>
+
+
+       <label>Cognom:</label>
+       <input type="text" th:field="*{cognom}" required><br>
+
+
+       <label>Adreça:</label>
+       <input type="text" th:field="*{adreça}" required><br>
+
+
+       <label>Document Identitat:</label>
+       <input type="text" th:field="*{document_identitat}" required><br>
+
+
+       <label>Data Naixement:</label>
+       <input type="date" th:field="*{data_naixement}" required><br>
+
+
+       <label>Telèfon:</label>
+       <input type="text" th:field="*{telefon}" required><br>
+
+
+       <label>Email:</label>
+       <input type="email" th:field="*{email}" required><br>
+
+
+       <label>Lloc Feina:</label>
+       <input type="text" th:field="*{llocFeina}" required><br>
+
+
+       <label>Data Contractació:</label>
+       <input type="date" th:field="*{data_contractacio}" required><br>
+
+
+       <label>Salari Brut:</label>
+       <input type="number" step="0.01" th:field="*{salariBrut}" required><br>
+
+
+  
+       <label for="estat">Estado Laboral:</label>
+       <select id="estat" th:field="*{estat}" required>
+           <option value="ACTIU">ACTIU</option>
+           <option value="BAIXA">BAIXA</option>
+           <option value="PERMIS">PERMIS</option>
+
+
+
+       </select><br>
+       <label for="tasques">Tasques asignades:</label><br>
+       <select id="tasques" name="tasques" th:field="*{tasques}" multiple required>
+           <option th:each="tasca : ${tasques}" th:value="${tasca.id}" th:text="${tasca.descripcio}"></option>
+       </select><br>
+
+
+       
+    <a th:href="@{/empleats/llistat}"><button type="submit">Donar alta empleat</button></a>
+   </form>
+</div>
+</body>
+</html>
+
+
+

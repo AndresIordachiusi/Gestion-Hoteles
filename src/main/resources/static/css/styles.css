@@ -284,3 +284,66 @@ h1 {
     background: #e0e0e0;
     transition: background 0.3s ease;
 }
+
+.altaempleat {
+    width: 50%;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.altaempleat h2 {
+    text-align: center;
+    color: #333;
+}
+
+.altaempleat form {
+    display: flex;
+    flex-direction: column;
+}
+
+.altaempleat label {
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333;
+}
+
+.altaempleat input,
+.altaempleat select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.altaempleat select[multiple] {
+    height: 100px;
+}
+
+.altaempleat button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.altaempleat button:hover {
+    background-color: #0056b3;
+}
+
+.altaempleat a {
+    text-decoration: none;
+}
+
+.altaempleat a button {
+    width: 100%;
+}
