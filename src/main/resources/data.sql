@@ -62,25 +62,25 @@ INSERT INTO habitacions (id, numero, capacitat, descripcio, tipus, estat, preuni
 
 INSERT INTO clients (id, adreça, cognom, data_naixement, document_identitat, email, nom, telefon, data_registre, targeta_credit, tipus)
 VALUES
-(1, 'Carrer Major 123, Barcelona', 'Garcia', '1980-05-15', '12345678A', 'garcia@gmail.com', 'Joan', '612345678', '2023-10-26', '675478984', 'REGULAR'),
-(2, 'Avinguda Diagonal 45, Girona', 'Martinez', '1975-12-01', '98765432B', 'martinez@gmail.com', 'Maria', '698765432', '2023-10-26', '975481675', 'VIP'),
-(3, 'Plaça Catalunya 10, Tarragona', 'Lopez', '1992-08-20', '56789012C', 'pere@gmail.com', 'Pere', '656789012', '2023-10-26', '637814975', 'PREMIUM'),
-(4, 'Rambla Nova 22, Lleida', 'Sanchez', '1988-03-10', '01234567D', 'anna@gmail.com', 'Anna', '601234567', '2023-10-26', '32487946', 'REGULAR'),
-(5, 'Gran Via 30, Manresa', 'Perez', '1970-06-25', '43210987E', 'josep@gmail.com', 'Josep', '643210987', '2023-10-26', '424784915', 'VIP');
+(500, 'Carrer Major 123, Barcelona', 'Garcia', '1980-05-15', '12345678A', 'garcia@gmail.com', 'Joan', '612345678', '2023-10-26', '675478984', 'REGULAR'),
+(501, 'Avinguda Diagonal 45, Girona', 'Martinez', '1975-12-01', '98765432B', 'martinez@gmail.com', 'Maria', '698765432', '2023-10-26', '975481675', 'VIP'),
+(502, 'Plaça Catalunya 10, Tarragona', 'Lopez', '1992-08-20', '56789012C', 'pere@gmail.com', 'Pere', '656789012', '2023-10-26', '637814975', 'PREMIUM'),
+(503, 'Rambla Nova 22, Lleida', 'Sanchez', '1988-03-10', '01234567D', 'anna@gmail.com', 'Anna', '601234567', '2023-10-26', '32487946', 'REGULAR'),
+(504, 'Gran Via 30, Manresa', 'Perez', '1970-06-25', '43210987E', 'josep@gmail.com', 'Josep', '643210987', '2023-10-26', '424784915', 'VIP');
 
 
 INSERT INTO empleats (id, adreça, cognom, data_naixement, document_identitat, email, nom, telefon, data_contractacio, estat, lloc_feina, salari_brut)
 VALUES
-(1, 'Carrer Nou 1, Barcelona', 'Vazquez', '1990-01-15', '12345678A', 'vazquez@gmail.com', 'Lucas', '612345678', '2020-03-01', 'ACTIU', 'Recepcionista', 30000),
-(2, 'Avinguda Gran 2, Girona', 'Camavinga', '1985-06-22', '98765432B', 'camavinga@gmail.com', 'Eduardo', '698765432', '2019-09-15', 'ACTIU', 'Cambrer', 28000),
-(3, 'Plaça Central 3, Tarragona', 'Mendy', '1995-11-10', '56789012C', 'mendy@gmail.com', 'Ferland', '656789012', '2021-01-05', 'PERMIS', 'Conserge', 32000),
-(4, 'Rambla Vella 4, Lleida', 'Diaz', '1982-04-03', '01234567D', 'diaz@gmail.com', 'Brahim', '601234567', '2018-11-20', 'ACTIU', 'Gerent', 45000),
-(5, 'Gran Via 5, Manresa', 'Courtois', '1978-09-18', '43210987E', 'courtois@gmail.com', 'Thibaut', '643210987', '2017-07-10', 'BAIXA', 'Comptable', 35000),
-(6, 'Carrer Estret 6, Vic', 'Rodriguez', '1998-02-28', '87654321F', 'rodriguez@gmail.com', 'Laura', '687654321', '2022-05-01', 'ACTIU', 'Manteniment', 29000),
-(7, 'Avinguda Ampla 7, Igualada', 'Gonzalez', '1987-07-05', '21098765G', 'gonzalez@gmail.com', 'David', '621098765', '2020-12-15', 'ACTIU', 'Cuiner', 27000),
-(8, 'Plaça Petita 8, Olot', 'Fernandez', '1993-12-08', '65432109H', 'fernandez@gmail.com', 'Silvia', '665432109', '2021-08-01', 'PERMIS', 'Administratiu', 25000),
-(9, 'Rambla Ampla 9, Reus', 'Ruiz', '1980-05-12', '98765432I', 'ruiz@gmail.com', 'Carlos', '698765432', '2019-05-20', 'ACTIU', 'Venedor', 26000),
-(10, 'Gran Avinguda 10, Mataró', 'Jimenez', '1975-10-25', '32109876J', 'jimenez@gmail.com', 'Isabel', '632109876', '2018-02-10', 'BAIXA', 'Jardiner', 38000);
+(500, 'Carrer Nou 1, Barcelona', 'Vazquez', '1990-01-15', '12345678A', 'vazquez@gmail.com', 'Lucas', '612345678', '2020-03-01', 'ACTIU', 'Recepcionista', 30000),
+(501, 'Avinguda Gran 2, Girona', 'Camavinga', '1985-06-22', '98765432B', 'camavinga@gmail.com', 'Eduardo', '698765432', '2019-09-15', 'ACTIU', 'Cambrer', 28000),
+(502, 'Plaça Central 3, Tarragona', 'Mendy', '1995-11-10', '56789012C', 'mendy@gmail.com', 'Ferland', '656789012', '2021-01-05', 'PERMIS', 'Conserge', 32000),
+(503, 'Rambla Vella 4, Lleida', 'Diaz', '1982-04-03', '01234567D', 'diaz@gmail.com', 'Brahim', '601234567', '2018-11-20', 'ACTIU', 'Gerent', 45000),
+(504, 'Gran Via 5, Manresa', 'Courtois', '1978-09-18', '43210987E', 'courtois@gmail.com', 'Thibaut', '643210987', '2017-07-10', 'BAIXA', 'Comptable', 35000),
+(505, 'Carrer Estret 6, Vic', 'Rodriguez', '1998-02-28', '87654321F', 'rodriguez@gmail.com', 'Laura', '687654321', '2022-05-01', 'ACTIU', 'Manteniment', 29000),
+(506, 'Avinguda Ampla 7, Igualada', 'Gonzalez', '1987-07-05', '21098765G', 'gonzalez@gmail.com', 'David', '621098765', '2020-12-15', 'ACTIU', 'Cuiner', 27000),
+(507, 'Plaça Petita 8, Olot', 'Fernandez', '1993-12-08', '65432109H', 'fernandez@gmail.com', 'Silvia', '665432109', '2021-08-01', 'PERMIS', 'Administratiu', 25000),
+(508, 'Rambla Ampla 9, Reus', 'Ruiz', '1980-05-12', '98765432I', 'ruiz@gmail.com', 'Carlos', '698765432', '2019-05-20', 'ACTIU', 'Venedor', 26000),
+(509, 'Gran Avinguda 10, Mataró', 'Jimenez', '1975-10-25', '32109876J', 'jimenez@gmail.com', 'Isabel', '632109876', '2018-02-10', 'BAIXA', 'Jardiner', 38000);
 
 
 
@@ -95,11 +95,11 @@ VALUES
 
 INSERT INTO reserves (id, data_fi, data_inici, data_reserva, preu_total_reserva, tipus_iva, tipus_reserva, client_id, habitacio_id)
 VALUES
-(1, '2025-03-10', '2025-03-05', '2025-02-20', 300.00, 7, 'AD', 1, 1),
-(2, '2025-04-15', '2025-04-10', '2025-03-01', 850.00, 21, 'MP', 2, 6),
-(3, '2025-05-20', '2025-05-15', '2025-04-05', 400.00, 7, 'AD', 3, 12),
-(4, '2025-06-25', '2025-06-20', '2025-05-10', 700.00, 21, 'MP', 4, 20),
-(5, '2025-07-30', '2025-07-25', '2025-06-15', 500.00, 7, 'AD', 5, 17);
+(1, '2025-03-10', '2025-03-05', '2025-02-20', 300.00, 7, 'AD', 500, 1),
+(2, '2025-04-15', '2025-04-10', '2025-03-01', 850.00, 21, 'MP', 501, 6),
+(3, '2025-05-20', '2025-05-15', '2025-04-05', 400.00, 7, 'AD', 502, 12),
+(4, '2025-06-25', '2025-06-20', '2025-05-10', 700.00, 21, 'MP', 503, 20),
+(5, '2025-07-30', '2025-07-25', '2025-06-15', 500.00, 7, 'AD', 504, 17);
 
 
 
@@ -114,10 +114,10 @@ VALUES
 
 INSERT INTO empleats_tasques (empleats_id, tasques_id)
 VALUES
-(1, 1),
-(2, 1),
-(3, 2),
-(4, 5),
-(5, 5),
-(1, 3),
-(10, 4);
+(500, 1),
+(501, 1),
+(502, 2),
+(503, 5),
+(504, 5),
+(505, 3),
+(506, 4);

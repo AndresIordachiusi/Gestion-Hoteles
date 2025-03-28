@@ -60,17 +60,30 @@ public class FormulariController {
     @PostMapping("/registrarEmpleat")
     public String registreEmpleat(Empleat empleat) {
         empleatsRepository.save(empleat);
+        
+        
 
         return "redirect:/empleats/llistat";
     }
 
-
-    @GetMapping("/altaclient")
+    @GetMapping("/altaClient")
     public String registreClient(Model model) {
-        List<Usuari> usuaris  = usuarisRepository.findAll();
-        model.addAttribute("usuaris", usuaris); 
         model.addAttribute("client", new Client());
         return "FORMULARIS/altaClient";
     }   
+
+    @PostMapping("/registrarClient")
+    public String registreClient(Client client) {
+        ClientsRepository.save(client);
+        return "redirect:/clients/llistat";
+    }
+ 
+
+    @GetMapping ("/clients/llistat")
+   public String llistatClients(Model model) {
+       model.addAttribute("clients", ClientsRepository.findAll());
+       return "clients/llistat";
+   }
+
 
 }

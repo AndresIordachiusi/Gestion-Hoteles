@@ -285,6 +285,56 @@ h1 {
     transition: background 0.3s ease;
 }
 
+.empleats-list {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+
+.empleats-list th, 
+.empleats-list td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.empleats-list th {
+    background: #007bff;
+    color: white;
+}
+
+.empleats-list tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+.empleats-list tr:hover {
+    background: #e0e0e0;
+    transition: background 0.3s ease;
+}
+
+.empleats-list th, 
+.empleats-list td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.empleats-list th {
+    background: #007bff;
+    color: white;
+}
+
+.empleats-list tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+.empleats-list tr:hover {
+    background: #e0e0e0;
+    transition: background 0.3s ease;
+}
+
+
 .altaempleat {
     width: 50%;
     margin: auto;
@@ -345,5 +395,70 @@ h1 {
 }
 
 .altaempleat a button {
+    width: 100%;
+}
+
+
+
+.altaclient {
+    width: 50%;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.altaclient h2 {
+    text-align: center;
+    color: #333;
+}
+
+.altaclient form {
+    display: flex;
+    flex-direction: column;
+}
+
+.altaclient label {
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333;
+}
+
+.altaclient input,
+.altaclient select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.altaclient select[multiple] {
+    height: 100px;
+}
+
+.altaclient button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.altaclient button:hover {
+    background-color: #0056b3;
+}
+
+.altaclient a {
+    text-decoration: none;
+}
+
+.altaclient a button {
     width: 100%;
 }
