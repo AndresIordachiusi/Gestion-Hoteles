@@ -1,3 +1,4 @@
+DELETE FROM usuaris;
 DELETE FROM empleats_tasques;
 DELETE FROM tasques;
 DELETE FROM reserves;
@@ -121,3 +122,6 @@ VALUES
 (504, 5),
 (505, 3),
 (506, 4);
+
+INSERT INTO usuaris (id, actiu, email, password, rol, username) VALUES (1, true, "admin@admin.com", "secret", "ROLE_ADMIN", "admin");
+INSERT INTO usuaris (id, actiu, email, password, rol, username) VALUES (2, true, "client@client.com", "secret", "ROLE_CLIENT", "client" );

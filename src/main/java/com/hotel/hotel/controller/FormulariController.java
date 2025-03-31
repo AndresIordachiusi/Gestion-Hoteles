@@ -30,7 +30,7 @@ public class FormulariController {
         this.ClientsRepository = ClientsRepository;
         this.usuarisRepository = usuarisRepository;
     }
-
+/* 
     @GetMapping("/formulari")
     public String mostrarFormulari(Model model) {
         model.addAttribute("usuari", new UsuariDTO());
@@ -42,6 +42,7 @@ public class FormulariController {
         model.addAttribute("usuari", usuari);
         return "FORMULARIS/resultat";
     }
+        */
     @GetMapping("/empleats/llistat")
     public String llistatEmpleats(Model model) {
         model.addAttribute("empleats", empleatsRepository.findAll());
@@ -74,7 +75,16 @@ public class FormulariController {
 
     @PostMapping("/registrarClient")
     public String registreClient(Client client) {
+        Usuari usuari = new Usuari();
+
+        usuari.setEmail(client.getEmail());
+        usuari.setActiu(true);
+        usuari.setRol("ROLE_CLIENT");
+        usuari.setPassword("contrasenya");
+        usuari.setUsername(client.getNom());
+
         ClientsRepository.save(client);
+        usuarisRepository.save(usuari);
         return "redirect:/clients/llistat";
     }
  
