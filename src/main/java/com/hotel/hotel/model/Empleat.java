@@ -31,16 +31,15 @@ public class Empleat extends Persona{
     private List<Tasca> tasques;
 
     public Empleat(Long id, String nom, String cognom, String adreça, String document_identitat,
-        LocalDate data_naixement, String telefon, String email, String llocFeina,
-        LocalDate data_contractacio, double salariBrut, EstatLaboral estat) {
-        super(id, nom, cognom, adreça, document_identitat, data_naixement, telefon, email);
+            LocalDate data_naixement, String telefon, String email, Usuari usuari, String llocFeina,
+            LocalDate data_contractacio, double salariBrut, EstatLaboral estat, List<Tasca> tasques) {
+        super(id, nom, cognom, adreça, document_identitat, data_naixement, telefon, email, usuari);
         this.llocFeina = llocFeina;
         this.data_contractacio = data_contractacio;
         this.salariBrut = salariBrut;
         this.estat = estat;
+        this.tasques = tasques;
     }
-
-
 
 
 

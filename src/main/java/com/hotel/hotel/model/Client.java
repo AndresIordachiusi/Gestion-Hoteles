@@ -24,25 +24,23 @@ public class Client extends Persona {
     
     private int targeta_credit;
 
+    /* 
     @OneToMany(mappedBy = "client")
     private List<Reserva> reserves;
-
+*/
 
     public Client() {
         
     }
 
-    
     public Client(Long id, String nom, String cognom, String adreça, String document_identitat,
-        LocalDate data_naixement, String telefon, String email, LocalDate data_registre,
-        CategoriaClient tipus, int targeta_credit, List<Reserva> reserves) {
-        super(id, nom, cognom, adreça, document_identitat, data_naixement, telefon, email);
+            LocalDate data_naixement, String telefon, String email, Usuari usuari, LocalDate data_registre,
+            CategoriaClient tipus, int targeta_credit) {
+        super(id, nom, cognom, adreça, document_identitat, data_naixement, telefon, email, usuari);
         this.data_registre = data_registre;
         this.tipus = tipus;
         this.targeta_credit = targeta_credit;
-        this.reserves = reserves;
     }
-
 
     public LocalDate getData_registre() {
         return data_registre;
@@ -74,7 +72,7 @@ public class Client extends Persona {
     }
 
 
-
+/* 
     public List<Reserva> getReserves() {
         return reserves;
     }
@@ -83,7 +81,7 @@ public class Client extends Persona {
     public void setReserves(List<Reserva> reserves) {
         this.reserves = reserves;
     }
-
+*/
 
 
 

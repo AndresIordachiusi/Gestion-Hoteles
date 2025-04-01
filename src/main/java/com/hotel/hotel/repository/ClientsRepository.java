@@ -15,7 +15,6 @@ import com.hotel.hotel.model.*;
 public interface ClientsRepository extends JpaRepository<Client, Long>  {
 
     Optional<Client> findById(Long id);
-  
 
 
   

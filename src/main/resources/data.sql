@@ -123,5 +123,5 @@ VALUES
 (505, 3),
 (506, 4);
 
-INSERT INTO usuaris (id, actiu, email, password, rol, username) VALUES (1, true, "admin@admin.com", "secret", "ROLE_ADMIN", "admin");
-INSERT INTO usuaris (id, actiu, email, password, rol, username) VALUES (2, true, "client@client.com", "secret", "ROLE_CLIENT", "client" );
+INSERT INTO usuaris (id, actiu, email, password, rol, username) VALUES (10, true, "admin@admin.com", "secret", "ROLE_ADMIN", "admin");
+INSERT INTO usuaris (id, actiu, email, password, rol, username) VALUES (11, true, "client@client.com", "secret", "ROLE_CLIENT", "client" );

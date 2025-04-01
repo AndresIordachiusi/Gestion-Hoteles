@@ -1,13 +1,42 @@
 <!DOCTYPE html>
-<html lang="ca">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+
+
+   <title>Gestor Administrador</title>
 </head>
 <body>
+  
+   <div class="navbar-container">
 
-    <h1>Dashboard</h1>
-    
+
+       <div class="logo">
+           <a th:href="@{dashboard}">Hotel Andrés</a>
+       </div>
+       <div class="navbar">
+           <a href="#home">Empleats</a>
+           <a href="#about">Tasques</a>
+           <a href="#services">Reserves</a>
+           <a href="#contact">Clients</a>
+       </div>
+       <button class="account-button">Mi Cuenta</button>
+
+
+   </div>
+
+
+   <br>
+
+
+
+
+
+
+   <h1 class="title-portada">Gestión de Administrador</h1>
+  
 </body>
 </html>
+

@@ -33,6 +33,10 @@ public class HotelController {
         return "hotels/llistat"; 
     }
 
+    @GetMapping("/")
+    public String index() {
+        return "principal";
+    }
 
     @GetMapping("/hotels/{id}")
     public String infohotel(@PathVariable Long id, Model model, HttpSession session) {

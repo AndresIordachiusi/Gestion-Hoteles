@@ -80,11 +80,16 @@ public class FormulariController {
         usuari.setEmail(client.getEmail());
         usuari.setActiu(true);
         usuari.setRol("ROLE_CLIENT");
-        usuari.setPassword("contrasenya");
+        usuari.setPassword("secret");
         usuari.setUsername(client.getNom());
 
+
+        usuari = usuarisRepository.save(usuari);
+
+        client.setUsuari(usuari);
+
+
         ClientsRepository.save(client);
-        usuarisRepository.save(usuari);
         return "redirect:/clients/llistat";
     }
  

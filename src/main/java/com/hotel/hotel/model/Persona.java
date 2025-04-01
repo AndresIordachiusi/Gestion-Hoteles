@@ -50,10 +50,8 @@ private Usuari usuari;
 public Persona() {
 }
 
-
-
 public Persona(Long id, String nom, String cognom, String adreça, String document_identitat, LocalDate data_naixement,
-    String telefon, String email) {
+        String telefon, String email, Usuari usuari) {
     this.id = id;
     this.nom = nom;
     this.cognom = cognom;
@@ -62,6 +60,7 @@ public Persona(Long id, String nom, String cognom, String adreça, String docume
     this.data_naixement = data_naixement;
     this.telefon = telefon;
     this.email = email;
+    this.usuari = usuari;
 }
 
 
@@ -158,6 +157,15 @@ public String getEmail() {
 
 public void setEmail(String email) {
     this.email = email;
+}
+
+
+public Usuari getUsuari() {
+    return usuari;
+}
+
+public void setUsuari(Usuari usuari) {
+    this.usuari = usuari;
 }
 
 
