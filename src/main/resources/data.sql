@@ -1,4 +1,3 @@
-DELETE FROM usuaris;
 DELETE FROM empleats_tasques;
 DELETE FROM tasques;
 DELETE FROM reserves;
@@ -8,6 +7,7 @@ DELETE FROM empleats;
 DELETE FROM habitacions;
 DELETE FROM hotels;
 DELETE FROM categories;
+DELETE FROM usuaris;
 INSERT INTO categories (id, nom) VALUES (1, 'Motel');
 INSERT INTO categories (id, nom) VALUES (2, '1 estrella');
 INSERT INTO categories (id, nom) VALUES (3, '2 estrelles');
