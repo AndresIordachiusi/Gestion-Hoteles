@@ -28,7 +28,7 @@ private ReservaRepository reservaRepository;
    }
 
 
-   @GetMapping("/reserves")
+   @GetMapping("/admin/reserves")
    public String showReserves(Model model) {
        List<Reserva> reserves = reservaRepository.findAll();
        List<Client> clients = clientsRepository.findAll();

@@ -1,1 +1,47 @@
-HOTELS DAW1
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" th:href="@{/css/principal.css}">
+   <title>Hotel Iorda</title>
+</head>
+<body>
+
+
+   <div class="navbar-container">
+
+
+       <div class="logo">
+           <a th:href="@{dashboard}">Iorda</a>
+       </div>
+       <div class="navbar">
+           <a href="#home">Inicio</a>
+           <a href="#about">Acerca</a>
+           <a href="#services">Servicios</a>
+           <a href="#contact">Contacto</a>
+       </div>
+       <button class="account-button"><a th:href="@{/login}">Log in</a></button>
+
+
+   </div>
+
+
+       <div class="image-top">
+           <picture>  
+               <img th:src="@{/images/20951418.jpg}" alt="Iorda logo" class="logo-image">
+           </picture>
+       </div>
+
+
+       <div class="cont-bienvenida">
+          
+           <h1>Reserva tu estadia con nostros</h1>
+           <h2>Hospedaje, Buffet y más... </h2>
+       </div>
+  
+
+
+</body>
+</html>
+

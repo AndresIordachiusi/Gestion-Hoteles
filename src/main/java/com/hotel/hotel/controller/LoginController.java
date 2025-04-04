@@ -33,4 +33,11 @@ public String dashboard() {
 
 }
 
+@GetMapping("/client/home")
+public String homedelcliente(){
+
+
+    return "/client/home";
+}
+
 }

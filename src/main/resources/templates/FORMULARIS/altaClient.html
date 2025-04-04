@@ -3,64 +3,77 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Alta de clients</title>
+   <title>Alta de clientes</title>
    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
 
 
-   <h2>Alta Client</h2>
-
-<div class="altaclient">
-<form th:action="@{/registrarClient}" method="post" th:object="${client}">
-  
-   <label>Nom:</label>
-   <input type="text" th:field="*{nom}" required><br>
+   <div class="navbar-container">
 
 
-   <label>Cognom:</label>
-   <input type="text" th:field="*{cognom}" required><br>
-
-
-   <label>Adreça:</label>
-   <input type="text" th:field="*{adreça}" required><br>
-
-
-   <label>Document Identitat:</label>
-   <input type="text" th:field="*{document_identitat}" required><br>
-
-
-   <label>Data Naixement:</label>
-   <input type="date" th:field="*{data_naixement}" required><br>
-
-
-   <label>Telèfon:</label>
-   <input type="text" th:field="*{telefon}" required><br>
-
-
-   <label>Email:</label>
-   <input type="email" th:field="*{email}" required><br>
-
-
-   <label>Data Registre:</label>
-   <input type="date" th:field="*{data_registre}" required><br>
-
-
-   <label>Tipus:</label>
-      <select th:field="*{tipus}" required>
-          <option value="REGULAR">REGULAR</option>
-          <option value="VIP">VIP</option>
-          <option value="PREMIUM">PREMIUM</option>
-      </select><br>
-
-
-   <label>Targeta de Credit:</label>
-   <input type="number" th:field="*{targeta_credit}" required><br>
-
-
-   <button type="submit">Donar alta client</button>
-</form>
+      <div class="logo">
+          <a th:href="@{altaClient}">Iorda</a>
+      </div>
+      <div class="navbar">
+          <a href="#home">Inicio</a>
+          <a href="#about">Acerca</a>
+          <a href="#services">Servicios</a>
+          <a href="#contact">Contacto</a>
+      </div>
+      <button class="account-button"><a th:href="@{/login}">Log in</a></button>
   </div>
+
+
+
+   <h2>¡Date de alta en Hoteles Iorda!</h2>
+
+
+
+
+   <form th:action="@{/registrarClient}" method="post" th:object="${client}" class="altaclient">
+
+     <div class="mitad1">
+        <label>Nom:</label>
+        <input type="text" th:field="*{nom}" required>
+
+        <label>Cognom:</label>
+        <input type="text" th:field="*{cognom}" required>
+
+        <label>Adreça:</label>
+        <input type="text" th:field="*{adreça}" required>
+
+        <label>Document Identitat:</label>
+        <input type="text" th:field="*{document_identitat}" required>
+
+        <label>Data Naixement:</label>
+        <input type="date" th:field="*{data_naixement}" required>
+     </div>
+
+     <div class="mitad2">
+        <label>Telèfon:</label>
+        <input type="text" th:field="*{telefon}" required>
+
+        <label>Email:</label>
+        <input type="email" th:field="*{email}" required>
+
+        <label>Data Registre:</label>
+        <input type="date" th:field="*{data_registre}" required>
+
+        <label>Tipus:</label>
+        <select th:field="*{tipus}" required>
+            <option value="REGULAR">REGULAR</option>
+            <option value="VIP">VIP</option>
+            <option value="PREMIUM">PREMIUM</option>
+        </select>
+
+        <label>Targeta de Credit:</label>
+        <input type="number" th:field="*{targeta_credit}" required>
+     </div>
+
+     <div class="boton-centro">
+        <button type="submit">Darse de alta como cliente</button>
+     </div>
+   </form>
 </body>
 </html>
-
