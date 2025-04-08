@@ -56,7 +56,7 @@ public class SecurityConfig {
 
  .requestMatchers("/client/**").hasRole("CLIENT")
 
- .requestMatchers("/", "/altaClient", "/login", "/register", "/css/**", "/js/**", "/images/**").permitAll()
+ .requestMatchers("/", "/altaClient","/registrarClient", "/login", "/register", "/css/**", "/js/**", "/images/**").permitAll()
 
  .anyRequest().authenticated()
 

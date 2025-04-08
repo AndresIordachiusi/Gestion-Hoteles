@@ -4,10 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cliente - Panel de control</title>
+    <link rel="stylesheet" th:href="@{/css/home.css}">
 </head>
 <body>
 
 
+    <div class="navbar-container">
+
+
+        <div class="logo">
+            <a th:href="@{altaClient}">Hoteles Iorda</a>
+        </div>
+        <div class="navbar">
+            <a href="#home">Inicio</a>
+            <a href="#about">Acerca</a>
+            <a href="#services">Servicios</a>
+            <a href="#contact">Contacto</a>
+        </div>
+        <form th:action="@{/logout}" method="POST">
+
+            <button type="submit">Cerrar sesión</button>
+           
+           </form>
+           <a class="account-button" th:href="@{/client/editarperfil}">Modificar Perfil</a>
+    </div>
+
+<div class="inicio">
+    <h1>Hola, <span th:text="${nom}"></span>!</h1>
+</div>
     ESTE SERIA EL DASHBOARD DEL CLIENTE
     
 </body>

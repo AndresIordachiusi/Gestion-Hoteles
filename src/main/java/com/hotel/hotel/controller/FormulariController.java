@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 import com.hotel.hotel.model.*;
 import com.hotel.hotel.repository.ClientsRepository;
@@ -74,13 +74,13 @@ public class FormulariController {
     }   
 
     @PostMapping("/registrarClient")
-    public String registreClient(Client client) {
+    public String registreClient(Client client, @RequestParam("password") String password) {
         Usuari usuari = new Usuari();
 
         usuari.setEmail(client.getEmail());
         usuari.setActiu(true);
         usuari.setRol("ROLE_CLIENT");
-        usuari.setPassword("secret");
+        usuari.setPassword(password);
         usuari.setUsername(client.getNom());
 
 
@@ -90,7 +90,7 @@ public class FormulariController {
 
 
         ClientsRepository.save(client);
-        return "redirect:/clients/llistat";
+        return "redirect:/login";
     }
  
 

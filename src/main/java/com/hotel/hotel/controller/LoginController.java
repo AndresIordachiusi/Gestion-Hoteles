@@ -32,12 +32,12 @@ public String dashboard() {
     return "admin/dashboard"; 
 
 }
-
+/* 
 @GetMapping("/client/home")
 public String homedelcliente(){
 
 
     return "/client/home";
 }
-
+*/
 }

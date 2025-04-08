@@ -1,30 +1,23 @@
 package com.hotel.hotel.controller;
 
-import java.util.ArrayList;
-
-import java.util.List;
-
 import java.util.Optional;
-
-
 
 import org.springframework.security.core.Authentication;
 
-import org.springframework.security.core.GrantedAuthority;
-
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import org.springframework.security.core.userdetails.User;
+
 
 import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
-
-
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.hotel.hotel.model.Usuari;
 
 import com.hotel.hotel.repository.UsuariRepository;
+
+import org.springframework.ui.Model;
 
 
 
@@ -47,9 +40,9 @@ public class PerfilController {
 
 
 
- @GetMapping("/perfil")
+ @GetMapping("/client/home")
 
- public String perfil() {
+ public String perfil(Model model) {
 
 
 
@@ -63,14 +56,20 @@ public class PerfilController {
 
  System.out.println("Usuari: " + username);
 
- 
+
 
  Optional<Usuari> usuari = usuariRepository.findByEmail(username);
 
+ if (usuari.isPresent()) {
+    model.addAttribute("nom", usuari.get().getEmail());
+ }
 
 
- return "principal"; // El nom de la vista que vulgueu carregar
+ return "client/home"; 
 
  }
+
+ 
+
 
 }

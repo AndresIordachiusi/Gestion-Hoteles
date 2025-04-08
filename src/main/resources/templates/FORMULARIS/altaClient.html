@@ -13,7 +13,7 @@
 
 
       <div class="logo">
-          <a th:href="@{altaClient}">Iorda</a>
+          <a th:href="@{altaClient}">Hoteles Iorda</a>
       </div>
       <div class="navbar">
           <a href="#home">Inicio</a>
@@ -69,7 +69,12 @@
 
         <label>Targeta de Credit:</label>
         <input type="number" th:field="*{targeta_credit}" required>
+
+        <label>Contrasenya: </label>
+        <input type="password" id="password" name="password" required>
      </div>
+
+
 
      <div class="boton-centro">
         <button type="submit">Darse de alta como cliente</button>
