@@ -4,14 +4,11 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" th:href="@{/css/principal.css}">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
    <title>Hotel Iorda</title>
 </head>
 <body>
-
-
    <div class="navbar-container">
-
-
        <div class="logo">
            <a th:href="@{/}">Hoteles Iorda</a>
        </div>
@@ -22,26 +19,51 @@
            <a href="#contact">Contacto</a>
        </div>
        <button class="account-button"><a th:href="@{/login}">Log in</a></button>
-
-
    </div>
 
-
-       <div class="image-top">
-           <picture>  
-               <img th:src="@{/images/hoteles-iorda2.webp}" alt="Iorda logo" class="logo-image">
-           </picture>
+   <!-- Sección de imagen mejorada con diseño moderno -->
+   <section class="image-hero">
+       <img th:src="@{/images/hoteles-iorda2.webp}" alt="Iorda Hotel" class="hero-image">
+       <div class="image-badge">
+           <i class="fas fa-award"></i> Recomendado
        </div>
-
-
-       <div class="cont-bienvenida">
-          
-           <h1>Reserva tu estadia con nostros</h1>
-           <h2>Hospedaje, Buffet y más... </h2>
+       <div class="hero-content">
+           <h1 class="hero-title">Experiencia de lujo en Hoteles Iorda</h1>
+           <h2 class="hero-subtitle">Tu destino perfecto para descansar y disfrutar</h2>
+           <div class="hero-buttons">
+               <a th:href="@{/hotels}" class="hero-btn">
+                   <i class="fas fa-calendar-alt"></i> Reservar ahora
+               </a>
+               <a href="#sobrenosotros" class="hero-btn hero-btn-outline">
+                   <i class="fas fa-info-circle"></i> Conocer más
+               </a>
+           </div>
        </div>
-  
+       <div class="hero-features">
+           <div class="feature-item">
+               <div class="feature-icon">
+                   <i class="fas fa-wifi"></i>
+               </div>
+               <span>WiFi Gratis</span>
+           </div>
+           <div class="feature-item">
+               <div class="feature-icon">
+                   <i class="fas fa-utensils"></i>
+               </div>
+               <span>Buffet Incluido</span>
+           </div>
+           <div class="feature-item">
+               <div class="feature-icon">
+                   <i class="fas fa-swimming-pool"></i>
+               </div>
+               <span>Piscina</span>
+           </div>
+       </div>
+   </section>
 
-
+   <div class="cont-bienvenida">
+       <h1>Reserva tu estadia con nosotros</h1>
+       <h2>Hospedaje, Buffet y más... </h2>
+   </div>
 </body>
 </html>
-
