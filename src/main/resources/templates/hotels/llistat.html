@@ -2,17 +2,33 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Llistat de Hotels</title>
+    <title>Hoteles Iorda - Hoteles</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
+<div class="navbar-container">
+
+
+            <div class="logo">
+                <a th:href="@{/}">Hoteles Iorda</a>
+            </div>
+            <div class="navbar">
+                <a href="#home">Inicio</a>
+                <a href="#about">Acerca</a>
+                <a href="#services">Servicios</a>
+                <a href="#contact">Contacto</a>
+            </div>
+            <button class="account-button"><a th:href="@{/login}">Log in</a></button>
+        </div>
+
     <div class="container">
-        <h1>Llistat dels nostres hotels:</h1>
+        <h1>Nuestros hoteles:</h1>
+        
+
         
         <table class="hotel-list">
 
             <tr>
-                <th>ID</th>
                 <th>Nom</th>
                 <th>Adreça</th>
                 <th>Ciutat</th>
@@ -25,13 +41,12 @@
 
 
         <tr th:each="hotel : ${hotels}">
-            <td th:text="${hotel.id}"></td>
             <td th:text="${hotel.nom}"></td>
             <td th:text="${hotel.adreca}"></td>
             <td th:text="${hotel.ciutat}"></td>
             <td th:text="${hotel.categoria.nom}"></td>
             <td>
-                <a th:href="@{/habitacions/{idhotel}(idhotel=${hotel.id})}">Veure habitacions</a>
+                <a th:href="@{/hotels/{id}(id=${hotel.id})}">Veure habitacions</a>
                 </td>
 
         </tr>     

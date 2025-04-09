@@ -13,12 +13,12 @@
 
 
        <div class="logo">
-           <a th:href="@{dashboard}">Iorda</a>
+           <a th:href="@{/}">Hoteles Iorda</a>
        </div>
        <div class="navbar">
            <a href="#home">Inicio</a>
-           <a href="#about">Acerca</a>
-           <a href="#services">Servicios</a>
+           <a th:href="@{/hotels}">Reservar</a>
+           <a href="#sobrenosotros">Sobre nosotros</a>
            <a href="#contact">Contacto</a>
        </div>
        <button class="account-button"><a th:href="@{/login}">Log in</a></button>
@@ -29,7 +29,7 @@
 
        <div class="image-top">
            <picture>  
-               <img th:src="@{/images/20951418.jpg}" alt="Iorda logo" class="logo-image">
+               <img th:src="@{/images/hoteles-iorda2.webp}" alt="Iorda logo" class="logo-image">
            </picture>
        </div>
 

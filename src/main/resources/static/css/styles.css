@@ -1,10 +1,13 @@
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    margin: 20px;
-    height: 100vh;
+
 }
     
 .container {
@@ -42,93 +45,77 @@ h1 {
 .hotel-list {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
-}
-
-
-.hotel-list th, 
-.hotel-list td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+    margin-top: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .hotel-list th {
-    background: #007bff;
+    background-color: #2c3e50;
     color: white;
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
 }
 
-.hotel-list tr:nth-child(even) {
-    background: #f9f9f9;
-}
-
-.hotel-list tr:hover {
-    background: #e0e0e0;
-    transition: background 0.3s ease;
-}
-
-.hotel-list th, 
 .hotel-list td {
-    padding: 10px;
-    text-align: left;
+    padding: 12px 15px;
     border-bottom: 1px solid #ddd;
-}
-
-.hotel-list th {
-    background: #007bff;
-    color: white;
+    color: #34495e;
 }
 
 .hotel-list tr:nth-child(even) {
-    background: #f9f9f9;
+    background-color: #f9f9f9;
 }
 
 .hotel-list tr:hover {
-    background: #e0e0e0;
-    transition: background 0.3s ease;
+    background-color: #f1f1f1;
+}
+
+.hotel-list a {
+    color: #2980b9;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.hotel-list a:hover {
+    color: #1c5980;
 }
 
 
-.habitacions-list th, 
-.habitacions-list td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-.habitacions-list th {
-    background: #007bff;
-    color: white;
-}
-
-.habitacions-list tr:nth-child(even) {
-    background: #f9f9f9;
-}
-
-.habitacions-list tr:hover {
-    background: #e0e0e0;
-    transition: background 0.3s ease;
-}
-
-.habitacions-list th, 
-.habitacions-list td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+.habitacions-list {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .habitacions-list th {
-    background: #007bff;
-    color: white;
+    background-color: #34495e;
+    color: #ecf0f1;
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.habitacions-list td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    color: #2c3e50;
 }
 
 .habitacions-list tr:nth-child(even) {
-    background: #f9f9f9;
+    background-color: #f8f8f8;
 }
 
 .habitacions-list tr:hover {
-    background: #e0e0e0;
-    transition: background 0.3s ease;
+    background-color: #f0f0f0;
 }
 
 
@@ -460,10 +447,12 @@ h2 {
     justify-content: space-between;
     align-items: center;
     background-color: #2c3e50;
-    padding: 15px 30px;
+    padding: 15px 15px;
     position: sticky;
+    top: 0;
     z-index: 100;
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    width: 99%;
 }
 
 .logo a {
