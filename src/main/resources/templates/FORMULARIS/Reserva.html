@@ -4,14 +4,12 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" th:href="@{/css/reserva.css}">
-   <title>Hoteles Iorda - Crear Reserva</title>
+   <title>Hoteles Iorda - Reservar</title>
 </head>
 <body>
 
 
     <div class="navbar-container">
-
-
         <div class="logo">
             <a th:href="@{altaClient}">Hoteles Iorda</a>
         </div>
@@ -33,13 +31,10 @@
 
 
    <h1 th:text="${hotel.nom}"></h1>
-
-
    <form th:action="@{/reservahabitacio}" th:object="${reserva}" method="post">
     
      <label>Fecha de inicio</label>
      <input type="date" th:field="*{data_inici}" required>
-
 
      <label>Fecha final</label>
      <input type="date" th:field="*{data_fi}" required>
@@ -49,7 +44,7 @@
      <select th:field="*{tipus_reserva}" required>
        <option value="AD">AD</option>
        <option value="MP">MP</option>
-     </select>
+            </select>
 
 
 
@@ -63,28 +58,14 @@
 
      <label>Habitaciones</label>
      <select th:field="*{habitacio.id}">
-         <option th:each="h : ${habitacions}"
-                 th:value="${h.id}"
-                 th:text="${h.numero + ' - ' + h.tipus + ' - ' + h.descripcio}"></option>
+         <option th:each="hab : ${habitacions}"
+                 th:value="${hab.id}"
+                 th:text="${hab.numero + ' - ' + hab.tipus}"></option>
      </select>
-     <input type="hidden" th:field="*{client.id}" />
-
-
     
      <button type="submit">Reservar</button>
-
-
     
      </form>
 
-
-
-
-
-
-  
-
-
-  
 </body>
 </html>
