@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" th:href="@{/css/reserva.css}">
+   <title>Hoteles Iorda - Crear Reserva</title>
+</head>
+<body>
+
+
+    <div class="navbar-container">
+
+
+        <div class="logo">
+            <a th:href="@{altaClient}">Hoteles Iorda</a>
+        </div>
+        <div class="navbar">
+            <a href="#home">Inicio</a>
+            <a href="#about">Acerca</a>
+            <a href="#services">Servicios</a>
+            <a href="#contact">Contacto</a>
+        </div>
+        <button class="account-button"><a th:href="@{/login}">Log in</a></button>
+    </div>
+
+
+
+
+   <h1>Bienvenido, <span th:text="${nom}">nombre</span>!</h1>
+
+
+
+
+   <h1 th:text="${hotel.nom}"></h1>
+
+
+   <form th:action="@{/reservahabitacio}" th:object="${reserva}" method="post">
+    
+     <label>Fecha de inicio</label>
+     <input type="date" th:field="*{data_inici}" required>
+
+
+     <label>Fecha final</label>
+     <input type="date" th:field="*{data_fi}" required>
+
+
+     <label>Elige tu tipo reserva</label>
+     <select th:field="*{tipus_reserva}" required>
+       <option value="AD">AD</option>
+       <option value="MP">MP</option>
+     </select>
+
+
+
+
+     <label>Tipo de IVA</label>
+     <select th:field="*{tipus_iva}" required>
+       <option value="10">10%</option>
+       <option value="21">21%</option>
+     </select>
+
+
+     <label>Habitaciones</label>
+     <select th:field="*{habitacio.id}">
+         <option th:each="h : ${habitacions}"
+                 th:value="${h.id}"
+                 th:text="${h.numero + ' - ' + h.tipus + ' - ' + h.descripcio}"></option>
+     </select>
+     <input type="hidden" th:field="*{client.id}" />
+
+
+    
+     <button type="submit">Reservar</button>
+
+
+    
+     </form>
+
+
+
+
+
+
+  
+
+
+  
+</body>
+</html>

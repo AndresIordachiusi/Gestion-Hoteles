@@ -15,8 +15,7 @@ public interface HabitacioRepository extends JpaRepository<Habitacio, Long> {
     Optional<Habitacio> findById(Long id);
     Optional<Habitacio> findByHotel(Hotel hotel);
     Optional<Habitacio> findByHotelId(Long idhotel);
-
-
+    List<Habitacio> findByHotelIdAndEstat(Long idhotel, EstatHabitacio estat);
 
     @Query("SELECT h.hotel.id, COUNT(h) FROM Habitacio h GROUP BY h.hotel.id")
 

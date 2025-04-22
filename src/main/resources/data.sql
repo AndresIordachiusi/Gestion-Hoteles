@@ -1,6 +1,5 @@
 DELETE FROM empleats_tasques;
 DELETE FROM tasques;
-DELETE FROM reserves;
 DELETE FROM factures;
 DELETE FROM clients;
 DELETE FROM empleats;
@@ -93,14 +92,6 @@ VALUES
 (4, 578.51, '2025-06-26', 21, 'EFECTIU', 700.00),
 (5, 467.29, '2025-07-31', 7, 'TARJETA', 500.00);
 
-
-INSERT INTO reserves (id, data_fi, data_inici, data_reserva, preu_total_reserva, tipus_iva, tipus_reserva, client_id, habitacio_id)
-VALUES
-(1, '2025-03-10', '2025-03-05', '2025-02-20', 300.00, 7, 'AD', 500, 1),
-(2, '2025-04-15', '2025-04-10', '2025-03-01', 850.00, 21, 'MP', 501, 6),
-(3, '2025-05-20', '2025-05-15', '2025-04-05', 400.00, 7, 'AD', 502, 12),
-(4, '2025-06-25', '2025-06-20', '2025-05-10', 700.00, 21, 'MP', 503, 20),
-(5, '2025-07-30', '2025-07-25', '2025-06-15', 500.00, 7, 'AD', 504, 17);
 
 
 
