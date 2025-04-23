@@ -2,6 +2,7 @@ package com.hotel.hotel.controller;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,71 +59,102 @@ private ReservaRepository reservaRepository;
 
 
 
+
    @GetMapping("/hotels/{id}/reserves")
-   public String reserva(@PathVariable Long id, Model model, HttpSession session){
-
-       Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-         String username = authentication.getName();
-
-
-
-        Optional<Usuari> usuario = usuariRepository.findByEmail(username);
-
-        if (usuario.isPresent()) {
-            model.addAttribute("nom", usuario.get().getPersona().getNom());
-            model.addAttribute("cognom", usuario.get().getPersona().getCognom());
-            
-            Optional<Hotel> opt = this.hotelRepository.findById(id);
-
-            if (opt.isPresent()) {
-                session.setAttribute("id_hotel", id);
-                Hotel h = opt.get();
-                model.addAttribute("hotel", h);
-
-                List<Habitacio> habitacions = habitacioRepository.findByHotelIdAndEstat(id, EstatHabitacio.DISPONIBLE);
-                model.addAttribute("habitacions", habitacions);
-            }
-
-            Client client = (Client) usuario.get().getPersona();
-            
-            Reserva reserva = new Reserva();
-            reserva.setClient(client);
-            model.addAttribute("reserva", reserva);
-            model.addAttribute("client", client);
-
-
-        return "FORMULARIS/Reserva";
-
-
-        }
-
-    return "redirect:/login?error";
-
+   public String mostrarFormularioReserva(@PathVariable Long id, Model model, HttpSession session) {
+       Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+       String emailUsuario = auth.getName();
+       Optional<Usuari> optionalUsuari = usuariRepository.findByEmail(emailUsuario);
+   
+       if (!optionalUsuari.isPresent()) {
+           return "redirect:/login?error";
+       }
+   
+       Usuari usuari = optionalUsuari.get();
+       model.addAttribute("nom", usuari.getPersona().getNom());
+       model.addAttribute("cognom", usuari.getPersona().getCognom());
+   
+       Optional<Hotel> hotelopt = hotelRepository.findById(id);
+       if (!hotelopt.isPresent()) {
+           model.addAttribute("errorHotel", "Hotel no encontrado");
+           return "error";
+       }
+   
+       Hotel hotel = hotelopt.get();
+       session.setAttribute("id_hotel", hotel.getId());
+       model.addAttribute("hotel", hotel);
+   
+       List<Habitacio> habitacionsDisponibles = habitacioRepository.findByHotelIdAndEstat(id, EstatHabitacio.DISPONIBLE);
+       model.addAttribute("habitacions", habitacionsDisponibles);
+   
+       Client client = (Client) usuari.getPersona();
+       Reserva novaReserva = new Reserva();
+       novaReserva.setClient(client);
+       session.setAttribute("client", client);
+   
+       model.addAttribute("reserva", novaReserva);
+       model.addAttribute("client", client);
+   
+       return "FORMULARIS/Reserva";
    }
+   
+
+@PostMapping("/reservahabitacio")
+public String reservarhabitacio(Model model, @ModelAttribute Reserva reserva, BindingResult result, HttpSession session) {
+
+    reserva.setData_reserva(Date.valueOf(LocalDate.now()));
+
+    Habitacio habitacioForm = reserva.getHabitacio();
+
+    Optional<Habitacio> habitacioOpt = habitacioRepository.findById(habitacioForm.getId());
+
+    Habitacio habitacio = habitacioOpt.get();
 
 
+    habitacio.setEstat(EstatHabitacio.OCUPADA);
+    Client client = (Client) session.getAttribute("client");
+    reserva.setClient(client);
+    reserva.setHabitacio(habitacio);
 
-    @PostMapping("/reservahabitacio")
-   public String reservarHabitacio(Model model, @ModelAttribute Reserva reserva, BindingResult result ){
+
+    long diesEstada = ChronoUnit.DAYS.between(reserva.getData_inici().toLocalDate(), reserva.getData_fi().toLocalDate());
 
 
-            reserva.setData_reserva(Date.valueOf(LocalDate.now()));
-            
-            Long habitacioId = reserva.getHabitacio().getId();
-            Optional<Habitacio> habitacioOpt = habitacioRepository.findById(habitacioId);
-            
-            
-            if (habitacioOpt.isPresent()) {
-                Habitacio habitacio = habitacioOpt.get();
+    if (diesEstada<=0) {
+        model.addAttribute("error de reserva", "La data d'inici ha de ser anterior a la data de fi");
+        return "error";
+    }
 
-                habitacio.setEstat(EstatHabitacio.OCUPADA);
-                reserva.setHabitacio(habitacio);
-                reservaRepository.save(reserva);
-                habitacioRepository.save(habitacio);
-            }
-            
-        return "redirect:/";
-   }
+
+    double preuhabitaMP = habitacio.getPreuNitMP();
+    double preuhabitaAD = habitacio.getPreuNitAD();
+
+
+    double preuIVA = 1.0;
+
+    if (reserva.getTipus_reserva() == TipusReserva.MP) {
+        preuIVA = 1.5;
+        double preuMP = diesEstada * preuhabitaMP * preuIVA;
+        double iva = preuMP * (reserva.getTipus_iva() / 100);
+        double total  = preuMP + iva;
+        reserva.setPreu_total_reserva(total);
+    }
+
+
+    if (reserva.getTipus_reserva() == TipusReserva.AD) {
+        preuIVA = 1.2;
+        double preuAD = diesEstada * preuhabitaAD * preuIVA;
+        double iva = preuAD * (reserva.getTipus_iva() / 100);
+        double total  = preuAD + iva;
+        reserva.setPreu_total_reserva(total);
+    }
+
+    reservaRepository.save(reserva);
+    habitacioRepository.save(habitacio);
+    return "redirect:/";
+}
+
+
 
 
   
