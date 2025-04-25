@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hotel.hotel.model.*;
 import com.hotel.hotel.repository.ClientsRepository;
@@ -24,7 +25,6 @@ import com.hotel.hotel.repository.ReservaRepository;
 import com.hotel.hotel.repository.UsuariRepository;
 
 import jakarta.servlet.http.HttpSession;
-import jakarta.transaction.Transactional;
 
 @Controller
 public class ReservesController {
@@ -55,6 +55,33 @@ private ReservaRepository reservaRepository;
        model.addAttribute("clients", clients);
        model.addAttribute("habitacions", habitacions);
        return "reserves/reserves";
+   }
+
+
+   @GetMapping("/reserves/reserves")
+   public String reservesClient(Model model){
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    String emailUsuario = auth.getName();
+    Optional<Usuari> usuariOpt = usuariRepository.findByEmail(emailUsuario);
+
+
+    if (!usuariOpt.isPresent()) {
+        return "redirect:/login?error";
+    }
+
+    Usuari usuari = usuariOpt.get();
+
+    if (!(usuari.getPersona() instanceof Client)) {
+        model.addAttribute("error", "Només els clients poden veure les seves reserves.");
+        return "error";
+    }
+
+    Client client = (Client) usuari.getPersona();
+
+    List<Reserva> reserves = reservaRepository.findByClientId(client.getId());
+    model.addAttribute("reserves", reserves);
+
+    return "reserves/reserves";
    }
 
 
@@ -101,6 +128,9 @@ private ReservaRepository reservaRepository;
 
 @PostMapping("/reservahabitacio")
 public String reservarhabitacio(Model model, @ModelAttribute Reserva reserva, BindingResult result, HttpSession session) {
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    String emailUsuario = auth.getName();
+    Optional<Usuari> optionalUsuari = usuariRepository.findByEmail(emailUsuario);
 
     reserva.setData_reserva(Date.valueOf(LocalDate.now()));
 
@@ -154,9 +184,55 @@ public String reservarhabitacio(Model model, @ModelAttribute Reserva reserva, Bi
     return "redirect:/";
 }
 
+/* 
+@PostMapping("/reserves/eliminar/{id}")
+public String eliminarReserva(@PathVariable Long id, Model model) {
+    String username = SecurityContextHolder.getContext().getAuthentication().getName();
+    Optional<Usuari> usuariOpt = usuariRepository.findByEmail(username);
 
+    if (usuariOpt.isPresent()) {
+        Client client = (Client) usuariOpt.get().getPersona();
+        Optional <Reserva> reserva = reservaRepository.findByIdAndClient_Id(id, client.getId());
 
+        if (reserva.isPresent()) {
+            reserva.get().getHabitacio().setEstat(EstatHabitacio.DISPONIBLE);
+            reservaRepository.delete(reserva.get());
+            return "redirect:/";
+        }
+        
+    }
+    return "error";
+}
+  */
 
   
+@PostMapping("/reserva/eliminar/{id}")
+public String eliminarReserva(@PathVariable Long id, HttpSession session) {
+       Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+       String emailUsuario = auth.getName();
+       Optional<Usuari> usuariOpt = usuariRepository.findByEmail(emailUsuario);
+
+
+    Usuari usuari = usuariOpt.get();
+    Client client = (Client) usuari.getPersona();
+
+    Optional<Reserva> reservaOpt = reservaRepository.findByIdAndClient_Id(id, client.getId());
+
+
+    Reserva reserva = reservaOpt.get();
+
+
+
+    Habitacio habitacio = reserva.getHabitacio();
+    habitacio.setEstat(EstatHabitacio.DISPONIBLE);
+    habitacioRepository.save(habitacio);
+
+
+    reservaRepository.delete(reserva);
+    return "redirect:/"; 
+}
+
+
+
 }
 

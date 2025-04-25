@@ -3,34 +3,35 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Reserves</title>
+   <title>Hoteles Iorda - Tus reservas</title>
    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
 
     <div class="container">
-        <h1>Reserves</h1>
+        <h1>Tu lista de reservas</h1>
     <table class="reserves-list"> 
         <thead>    
            <tr>
-               <th>Id</th>
-               <th>Data Reserva</th>
-               <th>Data inici</th>
-               <th>Data Fi</th>
-               <th>Tipus reserva</th>
-               <th>ID Client</th>
-               <th>ID Habitacio</th>
+               <th>Fecha de la reserva</th>
+               <th>Fecha de inicio</th>
+               <th>Fecha final</th>
+               <th>Tipo de reserva</th>
+               <th>ELIMINAR RESERVA</th>
            </tr>
     </thead>  
 
-           <tr th:each="reserva: ${reserves}">
-               <td th:text="${reserva.getId}"></td>    
+           <tr th:each="reserva: ${reserves}">  
                <td th:text="${reserva.getData_reserva}"></td>
                <td th:text="${reserva.getData_inici}"></td>
                <td th:text="${reserva.getData_fi}"></td>
                <td th:text="${reserva.getTipus_reserva}"></td>
-               <td th:text="${reserva.client.id}"></td>
-               <td th:text="${reserva.habitacio.id}"></td>
+               <td>
+                <form th:action="@{/reserva/eliminar/{id}(id=${reserva.id})}" method="post">
+                
+                    <button type="submit">Eliminar</button>
+                </form>
+               </td>
            </tr>
     
 

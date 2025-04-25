@@ -228,51 +228,35 @@ h1 {
 
 .reserves-list {
     width: 100%;
+    max-width: 1000px;
+    margin: 40px auto;
     border-collapse: collapse;
-    margin-top: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.reserves-list thead {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+}
 
-.reserves-list th, 
+.reserves-list th,
 .reserves-list td {
-    padding: 10px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    padding: 15px 20px;
+    font-size: 0.95em;
 }
 
-.reserves-list th {
-    background: #007bff;
-    color: white;
+.reserves-list tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
 }
 
-.reserves-list tr:nth-child(even) {
-    background: #f9f9f9;
-}
-
-.reserves-list tr:hover {
-    background: #e0e0e0;
-    transition: background 0.3s ease;
-}
-
-.reserves-list th, 
-.reserves-list td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-.reserves-list th {
-    background: #007bff;
-    color: white;
-}
-
-.reserves-list tr:nth-child(even) {
-    background: #f9f9f9;
-}
-
-.reserves-list tr:hover {
-    background: #e0e0e0;
-    transition: background 0.3s ease;
+.reserves-list tbody tr:hover {
+    background-color: #f0f8ff;
+    transition: background-color 0.2s ease-in-out;
 }
 
 .empleats-list {
