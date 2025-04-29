@@ -22,8 +22,17 @@ List <Reserva> findByClientId(Long clientId);
 Optional <Reserva> findByIdAndClient_Id(Long id, Long clientId);
 
 
-@Query("SELECT r FROM Reserva r WHERE r.habitacio.hotel.id = :hotelId AND " + "(:dataInici <= r.data_fi AND :dataFi >= r.data_inici)")
-    List<Reserva> findReservasSolapadas(@Param("hotelId") Long hotelId, @Param("dataInici") Date dataInici, @Param("dataFi") Date dataFi);
+@Query("SELECT r FROM Reserva r WHERE r.habitacio.hotel.id = :hotelId AND " +
+       "r.data_inici < :dataFi AND r.data_fi > :dataInici")
+List<Reserva> findReservasSolapadas(@Param("hotelId") Long hotelId,
+                                    @Param("dataInici") LocalDate dataInici,
+                                    @Param("dataFi") LocalDate dataFi);
+
+
+
+//@Query("SELECT r FROM Reserva r WHERE r.habitacio.hotel.id = :hotelId AND " + "(:dataInici <= r.data_fi AND :dataFi >= r.data_inici)")
+
+   // List<Reserva> findReservasSolapadas(@Param("hotelId") Long hotelId, @Param("dataInici") LocalDate dataInici, @Param("dataFi") LocalDate dataFi);
 
 
 

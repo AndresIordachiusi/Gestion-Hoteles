@@ -1,6 +1,7 @@
 package com.hotel.hotel.model;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,13 +27,13 @@ public class Reserva {
 private Long id;
 
 @Column (nullable = false)
-private Date data_reserva;
+private LocalDate data_reserva;
 
 @Column (nullable = false)
-private Date data_inici;
+private LocalDate data_inici;
 
 @Column (nullable = false)
-private Date data_fi;
+private LocalDate data_fi;
 
 @Enumerated(EnumType.STRING)
 private TipusReserva tipus_reserva;
@@ -59,7 +60,7 @@ private Habitacio habitacio;
 public Reserva() {
 }
 
-public Reserva(Long id, Date data_reserva, Date data_inici, Date data_fi, TipusReserva tipus_reserva, int tipus_iva,
+public Reserva(Long id, LocalDate data_reserva, LocalDate data_inici, LocalDate data_fi, TipusReserva tipus_reserva, int tipus_iva,
         double preu_total_reserva, Client client, Habitacio habitacio) {
     this.id = id;
     this.data_reserva = data_reserva;
@@ -81,27 +82,27 @@ public void setId(Long id) {
     this.id = id;
 }
 
-public Date getData_reserva() {
+public LocalDate getData_reserva() {
     return data_reserva;
 }
 
-public void setData_reserva(Date data_reserva) {
+public void setData_reserva(LocalDate data_reserva) {
     this.data_reserva = data_reserva;
 }
 
-public Date getData_inici() {
+public LocalDate getData_inici() {
     return data_inici;
 }
 
-public void setData_inici(Date data_inici) {
+public void setData_inici(LocalDate data_inici) {
     this.data_inici = data_inici;
 }
 
-public Date getData_fi() {
+public LocalDate getData_fi() {
     return data_fi;
 }
 
-public void setData_fi(Date data_fi) {
+public void setData_fi(LocalDate data_fi) {
     this.data_fi = data_fi;
 }
 
