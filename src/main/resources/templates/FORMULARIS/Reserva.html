@@ -1,71 +1,24 @@
+<!-- templates/FORMULARIS/ReservaFechas.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" th:href="@{/css/reserva.css}">
-   <title>Hoteles Iorda - Reservar</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/reserva.css}">
+    <title>Seleccionar Fechas</title>
 </head>
 <body>
 
+    <h1>Selecciona tus fechas</h1>
 
-    <div class="navbar-container">
-        <div class="logo">
-            <a th:href="@{altaClient}">Hoteles Iorda</a>
-        </div>
-        <div class="navbar">
-            <a href="#home">Inicio</a>
-            <a href="#about">Acerca</a>
-            <a href="#services">Servicios</a>
-            <a href="#contact">Contacto</a>
-        </div>
-        <!--<button class="account-button"><a th:href="@{/login}">Log in</a></button>-->
-    </div>
+    <form th:action="@{/hotels/{id}/reserva2(id=${hotel.id})}" method="post" th:object="${reserva}">
+        <label>Fecha de inicio:</label>
+        <input type="date" th:field="*{data_inici}" required>
 
+        <label>Fecha final:</label>
+        <input type="date" th:field="*{data_fi}" required>
 
-
-
-   <h1>Bienvenido, <span th:text="${nom}">nombre</span>!</h1>
-
-
-
-
-   <h1 th:text="${hotel.nom}"></h1>
-   <form th:action="@{/reservahabitacio}" th:object="${reserva}" method="post">
-    
-     <label>Fecha de inicio</label>
-     <input type="date" th:field="*{data_inici}" required>
-
-     <label>Fecha final</label>
-     <input type="date" th:field="*{data_fi}" required>
-
-
-     <label>Elige tu tipo reserva</label>
-     <select th:field="*{tipus_reserva}" required>
-       <option value="AD">AD</option>
-       <option value="MP">MP</option>
-            </select>
-
-
-
-
-     <label>Tipo de IVA</label>
-     <select th:field="*{tipus_iva}" required>
-       <option value="7">7%</option>
-       <option value="21">21%</option>
-     </select>
-
-
-     <label>Habitaciones</label>
-     <select th:field="*{habitacio.id}">
-         <option th:each="hab : ${habitacions}"
-                 th:value="${hab.id}"
-                 th:text="${hab.numero + ' - ' + hab.tipus}"></option>
-     </select>
-    
-     <button type="submit">Reservar</button>
-    
-     </form>
+        <button type="submit">Buscar habitaciones</button>
+    </form>
 
 </body>
 </html>

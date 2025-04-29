@@ -1,0 +1,42 @@
+<!-- templates/FORMULARIS/ReservaHabitacio.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/reserva.css}">
+    <title>Completar Reserva</title>
+</head>
+<body>
+
+    <h1>Selecciona tu habitación y completa tu reserva</h1>
+
+    <form th:action="@{/reservahabitacio}" th:object="${reserva}" method="post">
+
+        <input type="hidden" th:field="*{data_inici}">
+        <input type="hidden" th:field="*{data_fi}">
+
+        <label>Elige habitación:</label>
+        <select th:field="*{habitacio.id}" required>
+            <option th:each="hab : ${habitacionsDisponibles}"
+                    th:value="${hab.id}"
+                    th:text="${hab.numero + ' - ' + hab.tipus}"></option>
+        </select>
+
+        <label>Tipo de Reserva:</label>
+        <select th:field="*{tipus_reserva}" required>
+            <option value="AD">AD</option>
+            <option value="MP">MP</option>
+        </select>
+
+        <label>Tipo IVA:</label>
+        <select th:field="*{tipus_iva}" required>
+            <option value="7">7%</option>
+            <option value="21">21%</option>
+        </select>
+
+        <button type="submit">Finalizar Reserva</button>
+
+    </form>
+
+</body>
+</html>

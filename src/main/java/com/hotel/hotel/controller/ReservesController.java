@@ -58,7 +58,7 @@ private ReservaRepository reservaRepository;
    }
 
 
-   @GetMapping("/reserves/reserves")
+   @GetMapping("/reserves/reserves") // llistar reserves de cada client
    public String reservesClient(Model model){
     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     String emailUsuario = auth.getName();
@@ -85,9 +85,52 @@ private ReservaRepository reservaRepository;
    }
 
 
-
-
-   @GetMapping("/hotels/{id}/reserves")
+   @GetMapping("/hotels/{id}/reserves") // getmapping per als formularis reserva
+   public String mostrarFormularioReserva(@PathVariable Long id, Model model, HttpSession session) {
+       Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+       String emailUsuario = auth.getName();
+       Optional<Usuari> optionalUsuari = usuariRepository.findByEmail(emailUsuario);
+   
+       if (!optionalUsuari.isPresent()) {
+           return "redirect:/login?error";
+       }
+   
+       Usuari usuari = optionalUsuari.get();
+       model.addAttribute("nom", usuari.getPersona().getNom());
+       model.addAttribute("cognom", usuari.getPersona().getCognom());
+   
+       
+       if (!(usuari.getPersona() instanceof Client)) {
+           model.addAttribute("error", "Només els clients poden realitzar reserves.");
+           return "error"; 
+       }
+   
+       Client client = (Client) usuari.getPersona();
+       
+       Optional<Hotel> hotelopt = hotelRepository.findById(id);
+       if (!hotelopt.isPresent()) {
+           model.addAttribute("errorHotel", "Hotel no encontrado");
+           return "error";
+       }
+   
+       Hotel hotel = hotelopt.get();
+       session.setAttribute("id_hotel", hotel.getId());
+       model.addAttribute("hotel", hotel);
+   
+       List<Habitacio> habitacionsDisponibles = habitacioRepository.findByHotelIdAndEstat(id, EstatHabitacio.DISPONIBLE);
+       model.addAttribute("habitacions", habitacionsDisponibles);
+   
+       Reserva novaReserva = new Reserva();
+       novaReserva.setClient(client);
+       session.setAttribute("client", client);
+   
+       model.addAttribute("reserva", novaReserva);
+       model.addAttribute("client", client);
+   
+       return "FORMULARIS/Reserva";
+   }
+/* 
+   @GetMapping("/hotels/{id}/reservesBUENO")
    public String mostrarFormularioReserva(@PathVariable Long id, Model model, HttpSession session) {
        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
        String emailUsuario = auth.getName();
@@ -111,20 +154,12 @@ private ReservaRepository reservaRepository;
        session.setAttribute("id_hotel", hotel.getId());
        model.addAttribute("hotel", hotel);
    
-       List<Habitacio> habitacionsDisponibles = habitacioRepository.findByHotelIdAndEstat(id, EstatHabitacio.DISPONIBLE);
-       model.addAttribute("habitacions", habitacionsDisponibles);
-   
-       Client client = (Client) usuari.getPersona();
-       Reserva novaReserva = new Reserva();
-       novaReserva.setClient(client);
-       session.setAttribute("client", client);
-   
-       model.addAttribute("reserva", novaReserva);
-       model.addAttribute("client", client);
+       Reserva reserva = new Reserva();
+       model.addAttribute("reserva", reserva);
    
        return "FORMULARIS/Reserva";
    }
-   
+       */
 
 @PostMapping("/reservahabitacio")
 public String reservarhabitacio(Model model, @ModelAttribute Reserva reserva, BindingResult result, HttpSession session) {
@@ -134,17 +169,19 @@ public String reservarhabitacio(Model model, @ModelAttribute Reserva reserva, Bi
 
     reserva.setData_reserva(Date.valueOf(LocalDate.now()));
 
-    Habitacio habitacioForm = reserva.getHabitacio();
-
-    Optional<Habitacio> habitacioOpt = habitacioRepository.findById(habitacioForm.getId());
-
+    Optional<Habitacio> habitacioOpt = habitacioRepository.findById(reserva.getHabitacio().getId());
+        if (habitacioOpt.isEmpty()) {
+            model.addAttribute("error", "Habitación no encontrada");
+            return "error";
+        }
     Habitacio habitacio = habitacioOpt.get();
 
-
-    habitacio.setEstat(EstatHabitacio.OCUPADA);
     Client client = (Client) session.getAttribute("client");
     reserva.setClient(client);
     reserva.setHabitacio(habitacio);
+
+    habitacio.setEstat(EstatHabitacio.OCUPADA);
+    
 
 
     long diesEstada = ChronoUnit.DAYS.between(reserva.getData_inici().toLocalDate(), reserva.getData_fi().toLocalDate());
@@ -184,26 +221,59 @@ public String reservarhabitacio(Model model, @ModelAttribute Reserva reserva, Bi
     return "redirect:/";
 }
 
-/* 
-@PostMapping("/reserves/eliminar/{id}")
-public String eliminarReserva(@PathVariable Long id, Model model) {
-    String username = SecurityContextHolder.getContext().getAuthentication().getName();
-    Optional<Usuari> usuariOpt = usuariRepository.findByEmail(username);
+@PostMapping("/hotels/{id}/reserva2")
+public String comprobarDisponibilidad(@PathVariable Long id, @ModelAttribute("reserva") Reserva reservaForm, Model model, HttpSession session) {
 
-    if (usuariOpt.isPresent()) {
-        Client client = (Client) usuariOpt.get().getPersona();
-        Optional <Reserva> reserva = reservaRepository.findByIdAndClient_Id(id, client.getId());
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    String emailUsuario = auth.getName();
+    Optional<Usuari> optionalUsuari = usuariRepository.findByEmail(emailUsuario);
 
-        if (reserva.isPresent()) {
-            reserva.get().getHabitacio().setEstat(EstatHabitacio.DISPONIBLE);
-            reservaRepository.delete(reserva.get());
-            return "redirect:/";
-        }
-        
+    if (!optionalUsuari.isPresent()) {
+        return "redirect:/login?error";
     }
-    return "error";
+
+    Usuari usuari = optionalUsuari.get();
+    Client client = (Client) usuari.getPersona();
+
+    
+    if (client == null) {
+        model.addAttribute("error", "No se ha encontrado un cliente válido.");
+        return "error";  
+    }
+
+    reservaForm.setClient(client); 
+
+    
+    session.setAttribute("data_inici", reservaForm.getData_inici());
+    session.setAttribute("data_fi", reservaForm.getData_fi());
+
+    
+    List<Reserva> reservasSolapadas = reservaRepository.findReservasSolapadas(id, reservaForm.getData_inici(), reservaForm.getData_fi());
+
+    
+    List<Long> habitacionesOcupadasIds = reservasSolapadas.stream().map(r -> r.getHabitacio().getId()).toList();
+
+    
+    List<Habitacio> habitacionesDisponibles;
+    if (habitacionesOcupadasIds.isEmpty()) {
+        habitacionesDisponibles = habitacioRepository.findByHotelIdAndEstat(id, EstatHabitacio.DISPONIBLE);
+    } else {
+        habitacionesDisponibles = habitacioRepository.findByHotelIdAndEstat(id, EstatHabitacio.DISPONIBLE).stream().filter(h -> !habitacionesOcupadasIds.contains(h.getId())).toList();
+    }
+
+    model.addAttribute("habitacionsDisponibles", habitacionesDisponibles);
+    model.addAttribute("client", client);
+    model.addAttribute("hotel", hotelRepository.findById(id).orElse(null));
+    model.addAttribute("reserva", reservaForm);
+    model.addAttribute("nom", usuari.getPersona().getNom());
+    model.addAttribute("cognom", usuari.getPersona().getCognom());
+
+    return "FORMULARIS/Reserva2";
 }
-  */
+
+
+
+
 
   
 @PostMapping("/reserva/eliminar/{id}")
