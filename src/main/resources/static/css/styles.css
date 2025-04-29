@@ -477,7 +477,27 @@ h2 {
     background-color: #d4ac0d;
 }
 
-
+.navbar-container form button[type="submit"] {
+   background-color: #f39c12;
+   color: #000000;
+   border: none;
+   padding: 10px 16px;
+   border-radius: 6px;
+   font-weight: bold;
+   cursor: pointer;
+   margin-left: 0px;
+}
+.account-button,
+button[type="submit"] {
+   background-color: #2c3e50;
+   color: white;
+   border: none;
+   padding: 10px 16px;
+   border-radius: 6px;
+   font-weight: bold;
+   cursor: pointer;
+   margin-left: 0px;
+}
 h2 {
     justify-content: center;
     text-align: center;

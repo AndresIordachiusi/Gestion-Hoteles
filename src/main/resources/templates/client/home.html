@@ -17,20 +17,29 @@
         </div>
         <div class="navbar">
             <a th:href="@{/}">Inicio</a>
-           <a th:href="@{/reserves/reserves}">Reservar</a>
+           <a th:href="@{/reserves/reserves}">Mis Reservas</a>
+           <a th:href="@{/hotels}">Programar reserva</a>
            <a href="#sobrenosotros">Sobre nosotros</a>
            <a href="#contact">Contacto</a>
         </div>
+        <div class="account-buttons">
+
+            
+
+               <a type="submit" th:href="@{/client/editarperfil}">Editar perfil</a>
+              
+    
         <form th:action="@{/logout}" method="POST">
 
             <button type="submit">Cerrar sesión</button>
-           
            </form>
-         <!--  <a class="account-button" th:href="@{/client/editarperfil}">Modificar Perfil</a>-->
+           
+           </div>
+         
     </div>
 
 <div class="inicio">
-    <h1>Hola, <span th:text="${nom}"></span>!</h1>
+    <h1>¡Hola, <span th:text="${nom}"></span>!</h1>
 </div>
     ESTE SERIA EL DASHBOARD DEL CLIENTE
     

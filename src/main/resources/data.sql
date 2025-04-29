@@ -70,6 +70,12 @@ VALUES
 (504, 'Gran Via 30, Manresa', 'Perez', '1970-06-25', '43210987E', 'josep@gmail.com', 'Josep', '643210987', '2023-10-26', '424784915', 'VIP');
 
 
+INSERT INTO usuaris (id, actiu, email, password, rol, username) VALUES (20, true, "andres@client.com", "secret", "ROLE_CLIENT", "andres");
+INSERT INTO clients (id, adreça, cognom, data_naixement, document_identitat, email, nom, telefon, usuari_id, data_registre, targeta_credit, tipus)
+VALUES
+(505, 'Calle del Sol, 45', 'Iordachiusi', '2006-11-30', 'Y1887711', 'andres@client.com', 'Andres', '677889977', 20, '2020-11-27', '21212121', 'VIP');
+
+
 INSERT INTO empleats (id, adreça, cognom, data_naixement, document_identitat, email, nom, telefon, data_contractacio, estat, lloc_feina, salari_brut)
 VALUES
 (500, 'Carrer Nou 1, Barcelona', 'Vazquez', '1990-01-15', '12345678A', 'vazquez@gmail.com', 'Lucas', '612345678', '2020-03-01', 'ACTIU', 'Recepcionista', 30000),
@@ -82,7 +88,6 @@ VALUES
 (507, 'Plaça Petita 8, Olot', 'Fernandez', '1993-12-08', '65432109H', 'fernandez@gmail.com', 'Silvia', '665432109', '2021-08-01', 'PERMIS', 'Administratiu', 25000),
 (508, 'Rambla Ampla 9, Reus', 'Ruiz', '1980-05-12', '98765432I', 'ruiz@gmail.com', 'Carlos', '698765432', '2019-05-20', 'ACTIU', 'Venedor', 26000),
 (509, 'Gran Avinguda 10, Mataró', 'Jimenez', '1975-10-25', '32109876J', 'jimenez@gmail.com', 'Isabel', '632109876', '2018-02-10', 'BAIXA', 'Jardiner', 38000);
-
 
 
 INSERT INTO factures (id, base_imposable, data_emisio, iva, metode_pagament, total)

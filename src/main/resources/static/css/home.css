@@ -40,7 +40,6 @@ body {
 .navbar a:hover {
     color: #f1c40f;
 }
-
 .account-button {
     background-color: #f1c40f;
     border: none;
@@ -54,6 +53,11 @@ body {
 .account-button a {
     text-decoration: none;
     color: #2c3e50;
+}
+
+.account-buttons {
+    display: flex;
+    gap: 15px;
 }
 
 .account-button:hover {
@@ -70,7 +74,7 @@ h2 {
 
 .account-button,
 button[type="submit"] {
-   background-color: #f39c12;
+   background-color: #f1c40f;
    color: #000000;
    border: none;
    padding: 10px 16px;
@@ -79,4 +83,3 @@ button[type="submit"] {
    cursor: pointer;
    margin-left: 0px;
 }
-

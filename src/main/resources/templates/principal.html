@@ -13,15 +13,18 @@
            <a th:href="@{/}">Hoteles Iorda</a>
        </div>
        <div class="navbar">
-           <a href="#home">Inicio</a>
+           <a th:href="@{/}">Inicio</a>
            <a th:href="@{/hotels}">Reservar</a>
            <a href="#sobrenosotros">Sobre nosotros</a>
            <a href="#contact">Contacto</a>
        </div>
-       <button class="account-button"><a th:href="@{/login}">Log in</a></button>
+       <div class="account-buttons">
+        <button class="account-button"><a th:href="@{/client/home}">Mi cuenta</a></button>
+        <button class="account-button"><a th:href="@{/login}">Log in</a></button>
+    </div>
    </div>
 
-   <!-- Sección de imagen mejorada con diseño moderno -->
+ 
    <section class="image-hero">
        <img th:src="@{/images/hoteles-iorda2.webp}" alt="Iorda Hotel" class="hero-image">
        <div class="image-badge">
@@ -44,7 +47,7 @@
                <div class="feature-icon">
                    <i class="fas fa-wifi"></i>
                </div>
-               <span>WiFi Gratis</span>
+               <span>WiFi incluido</span>
            </div>
            <div class="feature-item">
                <div class="feature-icon">

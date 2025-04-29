@@ -34,6 +34,12 @@ body::-webkit-scrollbar {
     text-decoration: none;
 }
 
+.navbar {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
 .navbar a {
     color: #ecf0f1;
     text-decoration: none;
@@ -44,6 +50,11 @@ body::-webkit-scrollbar {
 
 .navbar a:hover {
     color: #f1c40f;
+}
+
+.account-buttons {
+    display: flex;
+    gap: 15px;
 }
 
 .account-button {

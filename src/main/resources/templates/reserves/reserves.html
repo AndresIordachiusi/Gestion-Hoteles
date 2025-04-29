@@ -8,28 +8,58 @@
 </head>
 <body>
 
+    <div class="navbar-container">
+
+
+        <div class="logo">
+            <a th:href="@{/}">Hoteles Iorda</a>
+        </div>
+        <div class="navbar">
+            <a th:href="@{/}">Inicio</a>
+           <a th:href="@{/reserves/reserves}">Mis Reservas</a>
+           <a th:href="@{/hotels}">Programar reserva</a>
+           <a href="#sobrenosotros">Sobre nosotros</a>
+           <a href="#contact">Contacto</a>
+        </div>
+        <form th:action="@{/logout}" method="POST">
+
+            <button type="submit">Cerrar sesión</button>
+           
+           </form>
+         <!--  <a class="account-button" th:href="@{/client/editarperfil}">Modificar Perfil</a>-->
+    </div>
+
     <div class="container">
         <h1>Tu lista de reservas</h1>
+        <br>
+        <div th:if="${#lists.isEmpty(reserves)}">
+            <h2>No hay ninguna reserva activa!</h2>
+        </div>
+
     <table class="reserves-list"> 
         <thead>    
            <tr>
+               <th>Hotel</th>
                <th>Fecha de la reserva</th>
                <th>Fecha de inicio</th>
                <th>Fecha final</th>
                <th>Tipo de reserva</th>
-               <th>ELIMINAR RESERVA</th>
+               <th>Numero de habitación</th>
+               <th>CANCELAR RESERVA</th>
            </tr>
     </thead>  
 
-           <tr th:each="reserva: ${reserves}">  
+           <tr th:each="reserva: ${reserves}">
+            <td th:text="${reserva.getHabitacio.hotel.nom}"></td>
                <td th:text="${reserva.getData_reserva}"></td>
                <td th:text="${reserva.getData_inici}"></td>
                <td th:text="${reserva.getData_fi}"></td>
                <td th:text="${reserva.getTipus_reserva}"></td>
+               <td th:text="${reserva.getHabitacio.numero}"></td>
                <td>
                 <form th:action="@{/reserva/eliminar/{id}(id=${reserva.id})}" method="post">
                 
-                    <button type="submit">Eliminar</button>
+                    <button type="submit">Cancelar reserva</button>
                 </form>
                </td>
            </tr>
