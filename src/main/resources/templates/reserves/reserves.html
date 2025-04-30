@@ -46,6 +46,7 @@
                <th>Tipo de reserva</th>
                <th>Numero de habitación</th>
                <th>CANCELAR RESERVA</th>
+               <th>Ver factura</th>
            </tr>
     </thead>  
 
@@ -61,6 +62,10 @@
                 
                     <button type="submit">Cancelar reserva</button>
                 </form>
+                <td>
+                    <a th:href="@{/facturas/facturas/{id}(id=${reserva.id})}"><button>Factura</button>
+                  </a>
+                 </td>
                </td>
            </tr>
     

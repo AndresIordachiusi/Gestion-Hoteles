@@ -1,6 +1,6 @@
 DELETE FROM empleats_tasques;
 DELETE FROM tasques;
-DELETE FROM factures;
+
 DELETE FROM reserves;
 DELETE FROM clients;
 DELETE FROM empleats;
@@ -90,13 +90,6 @@ VALUES
 (509, 'Gran Avinguda 10, Mataró', 'Jimenez', '1975-10-25', '32109876J', 'jimenez@gmail.com', 'Isabel', '632109876', '2018-02-10', 'BAIXA', 'Jardiner', 38000);
 
 
-INSERT INTO factures (id, base_imposable, data_emisio, iva, metode_pagament, total)
-VALUES
-(1, 280.00, '2025-03-11', 7, 'TARJETA', 300.00),
-(2, 702.48, '2025-04-16', 21, 'EFECTIU', 850.00),
-(3, 373.83, '2025-05-21', 7, 'TARJETA', 400.00),
-(4, 578.51, '2025-06-26', 21, 'EFECTIU', 700.00),
-(5, 467.29, '2025-07-31', 7, 'TARJETA', 500.00);
 
 
 

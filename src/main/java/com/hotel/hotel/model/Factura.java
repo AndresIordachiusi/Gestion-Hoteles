@@ -45,23 +45,22 @@ private double total;
 
 
 
-//@OneToOne
-//@JoinColumn(name = "reserva_id", nullable = false)
-//private Reserva reserva;
+@OneToOne(mappedBy = "factura")
+private Reserva reserva;
 
 public Factura() {
 }
 
 
 public Factura(Long id, LocalDate data_emisio, String metode_pagament, double base_imposable, double iva,
-     double total) {
+     double total, Reserva reserva) {
    this.id = id;
    this.data_emisio = data_emisio;
    this.metode_pagament = metode_pagament;
    this.base_imposable = base_imposable;
    this.iva = iva;
    this.total = total;
-  // this.reserva = reserva;
+   this.reserva = reserva;
 }
 
 
@@ -124,7 +123,7 @@ public void setTotal(double total) {
    this.total = total;
 }
 
-/* 
+ 
 public Reserva getReserva() {
    return reserva;
 }
@@ -134,7 +133,7 @@ public void setReserva(Reserva reserva) {
    this.reserva = reserva;
 }
 
-*/
+
 
 
 }

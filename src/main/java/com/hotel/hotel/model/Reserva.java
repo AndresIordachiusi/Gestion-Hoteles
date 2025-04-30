@@ -3,6 +3,7 @@ package com.hotel.hotel.model;
 import java.sql.Date;
 import java.time.LocalDate;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -53,15 +54,15 @@ private Client client;
 private Habitacio habitacio;
 
 
-//@OneToOne
-//@JoinColumn(name = "factura_id", nullable = false)
-//private Factura factura;
+@OneToOne(cascade = CascadeType.ALL)
+@JoinColumn(name = "factura_id", nullable = false)
+private Factura factura;
 
 public Reserva() {
 }
 
 public Reserva(Long id, LocalDate data_reserva, LocalDate data_inici, LocalDate data_fi, TipusReserva tipus_reserva, int tipus_iva,
-        double preu_total_reserva, Client client, Habitacio habitacio) {
+        double preu_total_reserva, Client client, Habitacio habitacio, Factura factura) {
     this.id = id;
     this.data_reserva = data_reserva;
     this.data_inici = data_inici;
@@ -71,7 +72,7 @@ public Reserva(Long id, LocalDate data_reserva, LocalDate data_inici, LocalDate 
     this.preu_total_reserva = preu_total_reserva;
     this.client = client;
     this.habitacio = habitacio;
-    //this.factura = factura;
+    this.factura = factura;
 }
 
 public Long getId() {
@@ -145,7 +146,7 @@ public Habitacio getHabitacio() {
 public void setHabitacio(Habitacio habitacio) {
     this.habitacio = habitacio;
 }
-/* 
+
 public Factura getFactura() {
     return factura;
 }
@@ -153,7 +154,7 @@ public Factura getFactura() {
 public void setFactura(Factura factura) {
     this.factura = factura;
 }
-*/
+
 
 
 
