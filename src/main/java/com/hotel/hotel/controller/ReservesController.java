@@ -51,16 +51,6 @@ private ReservaRepository reservaRepository;
    }
 
 
-   @GetMapping("/admin/reserves")
-   public String showReserves(Model model) {
-       List<Reserva> reserves = reservaRepository.findAll();
-       List<Client> clients = clientsRepository.findAll();
-       List<Habitacio> habitacions = habitacioRepository.findAll();
-       model.addAttribute("reserves", reserves);
-       model.addAttribute("clients", clients);
-       model.addAttribute("habitacions", habitacions);
-       return "reserves/reserves";
-   }
 
 
    @GetMapping("/reserves/reserves") // llistar reserves de cada client
@@ -143,7 +133,7 @@ private ReservaRepository reservaRepository;
        Optional<Usuari> optionalUsuari = usuariRepository.findByEmail(emailUsuario);
 
 
-       List<Factura> factures = facturaRepository.findAll();
+       List <Factura> factures = facturaRepository.findByReservaId(id);
        model.addAttribute("factures", factures);
     
        Optional<Hotel> hotel = this.hotelRepository.findById(id);

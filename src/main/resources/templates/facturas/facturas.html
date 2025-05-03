@@ -30,7 +30,7 @@
     </div>
 
     <div class="container">
-        <h1>Tu lista de facturas</h1>
+        <h1>¡Aquí tienes tu factura!</h1>
         <br>
         <div th:if="${#lists.isEmpty(factures)}">
             <h2>No hay ninguna factura disponible!</h2>
@@ -40,9 +40,10 @@
         <thead>    
            <tr>
                <th>Hotel</th>
+               <th>Habitacion</th>
                <th>Fecha de la factura</th>
                <th>Metodo de pago</th>
-               <th>Base imposable</th>
+               <th>Base impuesta</th>
                <th>IVA</th>
                <th>Precio de factura</th>
                <th>Nombre y apellido</th>
@@ -51,6 +52,7 @@
 
            <tr th:each="factura: ${factures}">
             <td th:text="${hotel}"></td>
+            <td th:text="${factura.getReserva.getHabitacio.getNumero}"></td>
             <td th:text="${factura.data_emisio}"></td>
             <td th:text="${factura.metode_pagament}"></td>
             <td th:text="${factura.base_imposable}"></td>

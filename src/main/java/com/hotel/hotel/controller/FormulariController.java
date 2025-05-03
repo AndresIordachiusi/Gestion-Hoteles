@@ -82,7 +82,9 @@ public class FormulariController {
         usuari.setRol("ROLE_CLIENT");
         usuari.setPassword(password);
         usuari.setUsername(client.getNom());
-
+        
+        
+        
 
         usuari = usuarisRepository.save(usuari);
 

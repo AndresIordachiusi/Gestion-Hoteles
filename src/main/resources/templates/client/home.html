@@ -23,14 +23,9 @@
            <a href="#contact">Contacto</a>
         </div>
         <div class="account-buttons">
-
             
-
-               <a type="submit" th:href="@{/client/editarperfil}">Editar perfil</a>
-              
-    
-        <form th:action="@{/logout}" method="POST">
-
+               <a th:href="@{/client/editarperfil}" class="account-button">Editar perfil</a>
+           <form th:action="@{/logout}" method="POST">
             <button type="submit">Cerrar sesión</button>
            </form>
            
@@ -41,7 +36,25 @@
 <div class="inicio">
     <h1>¡Hola, <span th:text="${nom}"></span>!</h1>
 </div>
-    ESTE SERIA EL DASHBOARD DEL CLIENTE
+<div class="dashboard-cards">
+    <div class="card">
+        <h3>Mis Reservas</h3>
+        <p>Consulta todas tus reservas activas y pasadas.</p>
+        <a th:href="@{/reserves/reserves}" class="card-button">Ver reservas</a>
+    </div>
+
+    <div class="card">
+        <h3>Programar Reserva</h3>
+        <p>Reserva fácilmente tu próxima estadía con nosotros.</p>
+        <a th:href="@{/hotels}" class="card-button">Reservar ahora</a>
+    </div>
+
+    <div class="card">
+        <h3>Editar Perfil</h3>
+        <p>Actualiza tu información personal y preferencias.</p>
+        <a th:href="@{/client/editarperfil}" class="card-button">Editar perfil</a>
+    </div>
+</div>
     
 </body>
 </html>

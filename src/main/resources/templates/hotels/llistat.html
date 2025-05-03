@@ -3,59 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/hotels.css}">
     <title>Hoteles Iorda - Hoteles</title>
 </head>
 <body>
-<div class="navbar-container">
-
-
-            <div class="logo">
-                <a th:href="@{/}">Hoteles Iorda</a>
-            </div>
-            <div class="navbar">
-                <a th:href="@{/}">Inicio</a>
-           <a th:href="@{/hotels}">Reservar</a>
-           <a href="#sobrenosotros">Sobre nosotros</a>
-           <a href="#contact">Contacto</a>
-            </div>
-            <button class="account-button"><a th:href="@{/login}">Log in</a></button>
+    <div class="navbar-container">
+        <div class="logo">
+            <a th:href="@{/}">Hoteles Iorda</a>
         </div>
+        <div class="navbar">
+            <a th:href="@{/}">Inicio</a>
+            <a th:href="@{/hotels}">Reservar</a>
+            <a href="#sobrenosotros">Sobre nosotros</a>
+            <a href="#contact">Contacto</a>
+        </div>
+        <button class="account-button"><a th:href="@{/login}">Iniciar sesión</a></button>
+    </div>
 
     <div class="container">
-        <h1>Nuestros hoteles:</h1>
+        <h1>Nuestros hoteles</h1>
         
-
-        
-        <table class="hotel-list">
-
-            <tr>
-                <th>Nom</th>
-                <th>Adreça</th>
-                <th>Ciutat</th>
-                <th>Categoria</th>
-                <th>Habitacions</th>
-
-
-            </tr>
-
-
-
-        <tr th:each="hotel : ${hotels}">
-            <td th:text="${hotel.nom}"></td>
-            <td th:text="${hotel.adreca}"></td>
-            <td th:text="${hotel.ciutat}"></td>
-            <td th:text="${hotel.categoria.nom}"></td>
-            <td>
-                <a th:href="@{/hotels/{id}(id=${hotel.id})}">Ver habitaciones</a>
-                <a th:href="@{/hotels/{id}/reserves(id=${hotel.id})}">Reservar</a>
-                </td>
-
-        </tr>     
-
-        </table>
-            
-        
+        <div class="hotels-grid">
+            <div class="hotel-card" th:each="hotel : ${hotels}">
+                <div class="hotel-header" th:text="${hotel.nom}"></div>
+                <div class="hotel-image">
+                    
+        <img th:src="@{/images/{id}.jpg(id=${hotel.id})}" alt="Imagen del hotel"/>
+        <img th:src="@{/images/{id}.jpg(id=${hotel.id})}" alt="Imagen del hotel"/>
+        <img th:src="@{/images/{id}.jpg(id=${hotel.id})}" alt="Imagen del hotel"/>
+                </div>
+                <div class="hotel-body">
+                    <div class="hotel-info">
+                        <div class="info-item">
+                            <span class="info-label">Dirección:</span>
+                            <span th:text="${hotel.adreca}"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Ciudad:</span>
+                            <span th:text="${hotel.ciutat}"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Categoría:</span>
+                            <span th:text="${hotel.categoria.nom}"></span>
+                        </div>
+                    </div>
+                    <div class="hotel-actions">
+                        <a class="action-button" th:href="@{/hotels/{id}(id=${hotel.id})}">Ver habitaciones</a>
+                        <a class="action-button" th:href="@{/hotels/{id}/reserves(id=${hotel.id})}">Reservar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

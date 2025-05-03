@@ -19,8 +19,16 @@
            <a href="#contact">Contacto</a>
        </div>
        <div class="account-buttons">
-        <button class="account-button"><a th:href="@{/client/home}">Mi cuenta</a></button>
-        <button class="account-button"><a th:href="@{/login}">Log in</a></button>
+        <button class="account-button"> 
+        <a class="account-button" th:if="${session.email == null}" th:href="@{/login}">Mi cuenta</a>
+        <a class="account-button" th:if="${rol == 'ADMIN'}" th:href="@{/admin/dashboard}">Mi cuenta</a>
+        <a class="account-button" th:if="${rol == 'CLIENT'}" th:href="@{/client/home}">Mi cuenta</a>
+        </button>
+        <form th:action="@{/logout}" method="POST">
+
+            <button class="account-button"><a th:href="@{/login}">Iniciar sesión</a></button>
+           </form>
+        
     </div>
    </div>
 
@@ -63,10 +71,40 @@
            </div>
        </div>
    </section>
-
-   <div class="cont-bienvenida">
-       <h1>Reserva tu estadia con nosotros</h1>
-       <h2>Hospedaje, Buffet y más... </h2>
-   </div>
+   <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3 class="footer-title">Hoteles Iorda</h3>
+            <p class="footer-description">Tu destino perfecto para descansar y disfrutar de una experiencia de lujo en nuestras instalaciones.</p>
+            <div class="social-icons">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        
+        <div class="footer-section">
+            <h3 class="footer-title">Enlaces rápidos</h3>
+            <ul class="footer-links">
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Reservas</a></li>
+                <li><a href="#">Habitaciones</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Promociones</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-section">
+            <h3 class="footer-title">Contacto</h3>
+            <ul class="footer-contact">
+                <li><i class="fas fa-phone-alt"></i> +34 678 98 45 78</li>
+                <li><i class="fas fa-envelope"></i> info@hoteliorda.com</li>
+            </ul>
+        </div>
+    </div>
+    
+</footer>
+   
 </body>
 </html>

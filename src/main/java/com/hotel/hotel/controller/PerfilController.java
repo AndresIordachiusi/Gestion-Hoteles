@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.hotel.hotel.repository.UsuariRepository;
 
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.ui.Model;
 
 
@@ -37,24 +39,16 @@ public class PerfilController {
  }
 
 
-
+// para usuarios
  @GetMapping("/client/home")
-
- public String perfil(Model model) {
-
-
+ public String perfil(Model model, HttpSession session) {
 
  Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-
-
  // Obtenim el nom d'usuari (email en el nostre cas!)
-
  String username = authentication.getName();
 
  System.out.println("Usuari: " + username);
-
-
 
  Optional<Usuari> usuari = usuariRepository.findByEmail(username);
 
@@ -62,11 +56,19 @@ public class PerfilController {
     model.addAttribute("email", usuari.get().getEmail());
     model.addAttribute("nom", usuari.get().getPersona().getNom());
  }
+ session.setAttribute("email", usuari.get().getEmail());
+ session.setAttribute("rol", usuari.get().getRol());
+ 
 
 
  return "client/home"; 
 
  }
+
+
+
+
+
 
  
  @GetMapping("/client/editarperfil")

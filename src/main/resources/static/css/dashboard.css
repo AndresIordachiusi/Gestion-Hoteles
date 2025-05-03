@@ -48,8 +48,8 @@ body {
 
 .account-button,
 button[type="submit"] {
-   background-color: #f39c12;
-   color: #fff;
+   background-color: #f1c40f;
+   color: black;
    border: none;
    padding: 10px 16px;
    border-radius: 6px;
@@ -61,7 +61,7 @@ button[type="submit"] {
 
 .account-button:hover,
 button[type="submit"]:hover {
-   background-color: #d68910;
+   background-color: #d4ac0d;
 }
 
 form {

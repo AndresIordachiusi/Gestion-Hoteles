@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Hoteles Iorda - Reservas</title>
+   <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+    <div class="navbar-container">
+
+
+        <div class="logo">
+            <a th:href="@{/}">Hoteles Iorda</a>
+        </div>
+        <div class="navbar">
+           <a th:href="@{/}">Inicio</a>
+           <a href="#home">Gestionar empleados</a>
+           <a href="#about">Gestionar tareas</a>
+           <a th:href="@{/admin/reserves}">Gestionar reservas</a>
+           <a href="#contact">Gestionar clientes</a>
+        </div>
+        <form th:action="@{/logout}" method="POST">
+
+            <button type="submit">Cerrar sesión</button>
+           
+           </form>
+
+    </div>
+
+    <div id="reserva-container" class="container">
+        <h1>Lista de reservas</h1>
+        <br>
+        <div th:if="${#lists.isEmpty(reserves)}">
+            <h2>¡No hay ninguna reserva activa!</h2>
+        </div>
+
+    <table class="reserves-list"> 
+        <thead>    
+           <tr>
+               <th>Hotel</th>
+               <th>Fecha de la reserva</th>
+               <th>Fecha de inicio</th>
+               <th>Fecha final</th>
+               <th>Tipo de reserva</th>
+               <th>Numero de habitación</th>
+               <th>Eliminar reserva</th>
+               <th>Ver factura</th>
+               <th>Confirmar reserva</th>
+           </tr>
+    </thead>  
+
+           <tr th:each="reserva: ${reserves}">
+            <td th:text="${reserva.getHabitacio.hotel.nom}"></td>
+               <td th:text="${reserva.getData_reserva}"></td>
+               <td th:text="${reserva.getData_inici}"></td>
+               <td th:text="${reserva.getData_fi}"></td>
+               <td th:text="${reserva.getTipus_reserva}"></td>
+               <td th:text="${reserva.getHabitacio.numero}"></td>
+               <td>
+                <form th:action="@{/admin/reserva/eliminar/{id}(id=${reserva.id})}" method="post">
+                
+                    <button type="submit">Eliminar reserva</button>
+                </form>
+                <td>
+                    <a th:href="@{/admin/facturas/facturas/{id}(id=${reserva.id})}"><button type="submit">Factura</button>
+                  </a>
+                 </td>
+                 <td>
+                 <form th:action="@{/admin/reserva/confirmar/{id}(id=${reserva.id})}" method="post">
+                
+                    <button type="submit">Confirmar reserva</button>
+                </form>
+                </td>
+               </td>
+           </tr>
+    
+
+
+   </table>
+
+</div>
+    
+</body>
+</html>

@@ -17,15 +17,16 @@
            <a th:href="@{dashboard}">Hotel Iorda</a>
        </div>
        <div class="navbar">
-           <a href="#home">Gestionar Empleats</a>
-           <a href="#about">Gestionar Tasques</a>
-           <a href="#services">Gestionar Reserves</a>
-           <a href="#contact">Gestionar Clients</a>
+        <a th:href="@{/}">Inicio</a>
+        <a href="#home">Gestionar empleados</a>
+        <a href="#about">Gestionar tareas</a>
+        <a th:href="@{/admin/reserves}">Gestionar reservas</a>
+        <a href="#contact">Gestionar clientes</a>
        </div>
-       <button class="account-button">Mi Cuenta</button>
+    
        <form th:action="@{/logout}" method="POST">
 
-        <button type="submit">Sortir</button>
+        <button type="submit">Cerrar sesión</button>
        
        </form>
 

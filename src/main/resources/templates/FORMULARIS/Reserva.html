@@ -8,6 +8,7 @@
 <body>
 
     <h1>Selecciona tus fechas</h1>
+    <h2><span th:text="${hotel.nom}"> </span></h2>
 
     <form th:action="@{/hotels/{id}/reserva2(id=${hotel.id})}" method="post" th:object="${reserva}">
         <label>Fecha de inicio:</label>
