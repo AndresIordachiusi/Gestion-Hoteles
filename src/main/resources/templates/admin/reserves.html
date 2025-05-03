@@ -48,6 +48,7 @@
                <th>Eliminar reserva</th>
                <th>Ver factura</th>
                <th>Confirmar reserva</th>
+               <th>Modificar reserva</th>
            </tr>
     </thead>  
 
@@ -73,6 +74,10 @@
                     <button type="submit">Confirmar reserva</button>
                 </form>
                 </td>
+                <td>
+                    <a th:href="@{/admin/reserva/editarReserva/{id}(id=${reserva.id})}"><button type="submit">Modificar reserva</button>
+                  </a>
+                 </td>
                </td>
            </tr>
     

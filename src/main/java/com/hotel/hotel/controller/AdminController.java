@@ -1,5 +1,6 @@
 package com.hotel.hotel.controller;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,6 +9,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -113,6 +115,38 @@ public class AdminController {
    }
 
 
+   @GetMapping("/admin/reserva/editarReserva/{id}")
+   public String FormulariEditarReserva(@PathVariable Long id, Model model) {
+
+    Reserva reserva = reservaRepository.findById(id).orElse(null);
+    
+    List<Habitacio> habitacions = habitacioRepository.findAll();
+    
+    model.addAttribute("reserva", reserva);
+    model.addAttribute("habitacions", habitacions);
+    model.addAttribute("tipus_reserva", Arrays.asList(TipusReserva.values()));
+    return "admin/editarReserva";
+}
+
+@PostMapping("/admin/reserva/actualizarReserva/{id}")
+public String actualitzarReserva(@PathVariable Long id, @ModelAttribute Reserva reservaActualizada) {
+    Reserva reservacambiada = reservaRepository.findById(id).orElse(null);
+
+    if (reservacambiada != null) {
+        reservacambiada.setHabitacio(reservaActualizada.getHabitacio());
+        if (reservaActualizada.getData_inici() != null) {
+            reservacambiada.setData_inici(reservaActualizada.getData_inici());
+        }
+        if (reservaActualizada.getData_fi() != null) {
+            reservacambiada.setData_fi(reservaActualizada.getData_fi());
+        }
+        reservacambiada.setTipus_reserva(reservaActualizada.getTipus_reserva());
+
+        reservaRepository.save(reservacambiada);
+    }
+
+    return "redirect:/admin/reserves";
+}
 
    @PostMapping("/admin/reserva/eliminar/{id}")
    public String eliminarReserva(@PathVariable Long id, HttpSession session) {

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Hoteles Iorda - Tus reservas</title>
+   <link rel="stylesheet" th:href="@{/css/editarReserva.css}">
+</head>
+<body>
+
+    <div class="navbar-container">
+
+
+        <div class="logo">
+            <a th:href="@{/}">Hoteles Iorda</a>
+        </div>
+        <div class="navbar">
+            <a th:href="@{/}">Inicio</a>
+            <a href="#home">Gestionar empleados</a>
+            <a href="#about">Gestionar tareas</a>
+            <a th:href="@{/admin/reserves}">Gestionar reservas</a>
+            <a href="#contact">Gestionar clientes</a>
+        </div>
+        <form th:action="@{/logout}" method="POST">
+
+            <button type="submit">Cerrar sesión</button>
+           
+           </form>
+    </div>
+
+        <h1>Editando reserva de:</h1>
+        <h1><span th:text="${reserva.getClient.getNom + ' ' + reserva.getClient.getCognom}"> </span></h1>
+        <br>
+        
+
+        <div class="container">
+        <form th:action="@{/admin/reserva/actualizarReserva/{id}(id=${reserva.id})}" th:object="${reserva}" method="post">
+            <input type="hidden" th:field="*{id}" />
+        
+            <label>Habitación:</label>
+            <select th:field="*{habitacio.id}">
+                <option th:each="h : ${habitacions}" th:value="${h.id}" th:text="${h.numero + ' - ' + h.tipus}"></option>
+            </select>
+        
+            <label>Fecha de inicio</label>
+            <input type="date" th:field="*{data_inici}" />
+        
+            <label>Fecha final:</label>
+            <input type="date" th:field="*{data_fi}" />
+        
+            <label>Tipo de reserva:</label>
+            <select th:field="*{tipus_reserva}">
+                <option th:each="t : ${tipus_reserva}" th:value="${t}" th:text="${t}"></option>
+            </select>
+        
+            <button type="submit">Guardar cambios</button>
+        </form>
+       
+</div>
+    
+</body>
+</html>
