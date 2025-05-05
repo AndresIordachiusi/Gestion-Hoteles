@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hotel.hotel.model.*;
 import com.hotel.hotel.repository.*;
@@ -29,8 +30,9 @@ public class AdminController {
     private ReservaRepository reservaRepository;
     private ClientsRepository clientsRepository;
     private EmpleatsRepository empleatsRepository;
+    private TascaRepository tascaRepository;
 
-   public AdminController(ReservaRepository reservaRepository, HabitacioRepository habitacioRepository, UsuariRepository usuariRepository, HotelRepository hotelRepository, FacturaRepository facturaRepository, ClientsRepository clientsRepository, EmpleatsRepository empleatsRepository) {   
+   public AdminController(ReservaRepository reservaRepository, HabitacioRepository habitacioRepository, UsuariRepository usuariRepository, HotelRepository hotelRepository, FacturaRepository facturaRepository, ClientsRepository clientsRepository, EmpleatsRepository empleatsRepository, TascaRepository tascaRepository) {   
        this.reservaRepository = reservaRepository;
        this.habitacioRepository = habitacioRepository;
        this.usuariRepository = usuariRepository;
@@ -38,6 +40,7 @@ public class AdminController {
        this.facturaRepository = facturaRepository;
        this.clientsRepository = clientsRepository;
        this.empleatsRepository = empleatsRepository;
+       this.tascaRepository = tascaRepository;
    }
 
    @GetMapping("admin/dashboard")
@@ -168,10 +171,19 @@ public String actualitzarReserva(@PathVariable Long id, @ModelAttribute Reserva 
 
 
 @GetMapping("/admin/empleadosdash")
-public String showEmpleats(Model model) {
+public String Dashboardempleats() {
 
     return "admin/empleadosdash";
 
+}
+
+@GetMapping("/admin/llistaempleats")
+    public String showEmpleats(Model model) {
+    List<Empleat> empleats = empleatsRepository.findAll();
+    List<Tasca> tasques = tascaRepository.findAll();
+    model.addAttribute("empleats", empleats);
+    model.addAttribute("tasques", tasques);
+    return "admin/llistaempleats"; 
 }
 
 @GetMapping("/admin/empleat/editar/{id}")
@@ -232,6 +244,35 @@ public String actualitzarRolAdmin(@PathVariable Long id) {
     
     return "redirect:/admin/empleadosdash";
 }
+
+    @GetMapping("/admin/habitaciones")
+    public String mostrarHabitaciones(Model model){
+        List <Hotel> hotels = hotelRepository.findAll();
+        List <Habitacio> habitacions = habitacioRepository.findAll();
+
+        model.addAttribute("habitacions", habitacions);
+        model.addAttribute("hotels", hotels);
+        return "admin/habitaciones";
+    }
+
+    @PostMapping("/admin/habitaciones/filtrar")
+    public String filtrar(Model model, @RequestParam(required = false) Long HotelId, @RequestParam(required = false) TipusHabitacio tipus){
+        List<Habitacio> habitacions;
+
+    if (HotelId == null && tipus == null) {
+        habitacions = habitacioRepository.findAll();
+    } else if (HotelId == null) {
+        habitacions = habitacioRepository.findByTipus(tipus);
+    } else if (tipus == null) {
+        habitacions = habitacioRepository.findByHotelId(HotelId);
+    } else {
+        habitacions = habitacioRepository.findByHotelIdAndTipus(HotelId, tipus);
+    }
+
+    model.addAttribute("habitacions", habitacions);
+    model.addAttribute("hotels", hotelRepository.findAll());
+        return "admin/habitaciones";
+    }
 
 
 

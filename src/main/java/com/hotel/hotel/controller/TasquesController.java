@@ -1,6 +1,7 @@
 package com.hotel.hotel.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +29,7 @@ public class TasquesController {
     }
 
 
-    @GetMapping("/empleats/tasques")
+    @GetMapping("/admin/empleats/tasques")
     public String showTasques(Model model) {
     List<Empleat> empleats = empleatsRepository.findAll();
     List<Tasca> tasques = tascaRepository.findAll();
@@ -37,8 +38,7 @@ public class TasquesController {
     return "empleats/tasques";
     }
 
-
-    @PostMapping("/empleats/asignartasca")
+    @PostMapping("/admin/empleats/asignartasca")
     public String assignarTasca(@RequestParam Long empleatId, @RequestParam Long tascaId) {
         Empleat empleat = empleatsRepository.findById(empleatId).orElse(null);
         Tasca tasca = tascaRepository.findById(tascaId).orElse(null);
@@ -48,7 +48,22 @@ public class TasquesController {
             empleatsRepository.save(empleat);
             tascaRepository.save(tasca);
         
-        return "redirect:/empleats/tasques";
+        return "redirect:/admin/empleats/tasques";
     }
+
+    @PostMapping("/admin/tasca/canviarestat")
+    public String estatTasca(@RequestParam Long tascaId, @RequestParam EstatTasca estatTasca){
+
+        Optional <Tasca> tasca = tascaRepository.findById(tascaId);
+        Tasca tasca2 = tasca.get();
+
+        tasca2.setEstat(estatTasca);
+        tascaRepository.save(tasca2);
+
+
+
+        return "redirect:/admin/empleats/tasques";
+    }
+    
 
 }

@@ -4,32 +4,54 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Tasques</title>
-   <link rel="stylesheet" th:href="@{/css/styles.css}">
+   <link rel="stylesheet" th:href="@{/css/tasques.css}">
 </head>
 <body>
+
+    <div class="navbar-container">
+
+
+        <div class="logo">
+            <a th:href="@{dashboard}">Hotel Iorda</a>
+        </div>
+        <div class="navbar">
+         <a th:href="@{/}">Inicio</a>
+         <a th:href="@{/altaempleat}">Dar de alta empleado</a>
+         <a th:href="@{/empleats/llistat}">Lista de empleados</a>
+        </div>
+     
+        <form th:action="@{/logout}" method="POST">
+ 
+         <button type="submit">Cerrar sesión</button>
+        
+        </form>
+ 
+    </div>
+
 
 
    <div class="container">
 
 
-    <form th:action="@{/empleats/asignartasca}" method="post">
-        
-        <select name="empleatId">
-            <option th:each="emp : ${empleat}"
-                    th:value="${emp.getId}"
-                    th:text="${emp.nom + ' ' + emp.cognom}">
-            </option>
-        </select>
-        
-            <select name="tascaId">
-                <option th:each="tas : ${tasca}"
-                        th:value="${tas.getId}"
-                        th:text="${tas.getDescripcio}">
-                </option>
-            </select>
-            <button type="submit">Asignar tarea</button>
+    <form th:action="@{/admin/empleats/asignartasca}" method="post">
+        <label for="empleatId">Selecciona empleado:</label>
+        <select name="empleatId" id="empleatId">
             
-</form>
+            <th:block th:each="empleat : ${empleats}">
+                <option th:value="${empleat.id}" th:text="${empleat.nom + ' ' + empleat.cognom}"></option>
+            </th:block>
+        </select>
+    
+        <label for="tascaId">Selecciona tarea:</label>
+        <select name="tascaId" id="tascaId">
+            
+            <th:block th:each="tasca : ${tasques}">
+                <option th:value="${tasca.id}" th:text="${tasca.descripcio}"></option>
+            </th:block>
+        </select>
+    
+        <button type="submit">Asignar tarea</button>
+    </form>
 
 
        <table class="tasques-list">
@@ -39,6 +61,7 @@
                    <th>Data Creacio</th>
                    <th>Data ejecució</th>
                    <th>Estat</th>
+                   <th>Cambiar estado</th>
                    <th>Empleats</th>
                </tr>
            </thead>
@@ -49,11 +72,21 @@
                    <td th:text="${tasca.getData_creacio}"></td>
                    <td th:text="${tasca.getData_ejecucio}"></td>
                    <td th:text="${tasca.getEstat}"></td>
-
+                        <td>
+                            <form th:action="@{/admin/tasca/canviarestat}" method="post">
+                                <input type="hidden" name="tascaId" th:value="${tasca.id}" />
+                                <select name="estatTasca">
+                                    <option value="PENDENT" th:selected="${tasca.estat.name() == 'PENDENT'}">PENDENT</option>
+                                    <option value="EN_PROGRÉS" th:selected="${tasca.estat.name() == 'EN_PROGRÉS'}">EN PROGRÉS</option>
+                                    <option value="COMPLETADA" th:selected="${tasca.estat.name() == 'COMPLETADA'}">COMPLETADA</option>
+                                </select>
+                                <button type="submit">Guardar</button>
+                            </form>
+                        </td>
 
                    <td>
                        <ul>
-                           <li th:each ="empleats : ${tasca.empleats}" th:text="${empleats.nom}"></li>
+                           <li th:each ="empleats : ${tasca.empleats}" th:text="${empleats.nom + ' ' + empleats.cognom}"></li>
                        </ul>
                    </td>
                   

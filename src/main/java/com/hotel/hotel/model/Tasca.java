@@ -19,6 +19,7 @@ import com.hotel.hotel.model.*;
 public class Tasca {
     
 @Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
 private Long id;
 
 

@@ -17,8 +17,6 @@
        <a th:href="@{/}">Inicio</a>
        <a th:href="@{/altaempleat}">Dar de alta empleado</a>
        <a th:href="@{/empleats/llistat}">Lista de empleados</a>
-       <a th:href="@{/}">Eliminar empleado</a>
-       <a href="#about">Modificar empleado</a>
       </div>
    
       <form th:action="@{/logout}" method="POST">
@@ -36,8 +34,6 @@
                <th>Cognom</th>
                <th>Lloc Feina</th>
                <th>Estat</th>
-               <th>Modificar datos</th>
-               <th>Eliminar empleado</th>
            </tr>
     
 
@@ -47,17 +43,6 @@
                <td th:text="${emp.getCognom}"></td>
                <td th:text="${emp.getLlocFeina}"></td>
                <td th:text="${emp.getEstat}"></td>
-               <td>
-                  <a th:href="@{/admin/empleat/editar/{id}(id=${emp.id})}"><button type="submit">Modificar datos</button></a>
-               </td>
-
-               <td>
-               <form th:action="@{/admin/empleat/eliminar/{id}(id=${emp.id})}" method="post">
-                  <a>
-                     <button type="submit">Eliminar empleado</button>
-                  </a>
-               </form>
-               </td>
            </tr>
     
 

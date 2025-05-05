@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" th:href="@{/css/habitaciones.css}">
+
+
+   <title>Gestor Administrador - Hoteles</title>
+</head>
+<body>
+  
+   <div class="navbar-container">
+
+
+       <div class="logo">
+           <a th:href="@{/}">Hotel Iorda</a>
+       </div>
+       <div class="navbar">
+        <a th:href="@{/}">Inicio</a>
+        <a th:href="@{/admin/empleadosdash}">Gestionar empleados</a>
+        <a th:href="@{/admin/empleats/tasques}">Gestionar tareas</a>
+        <a th:href="@{/admin/reserves}">Gestionar reservas</a>
+        <a th:href="@{/admin/habitaciones}">Mostrar habitaciones</a>
+       </div>
+    
+       <form th:action="@{/logout}" method="POST">
+
+        <button type="submit">Cerrar sesión</button>
+       
+       </form>
+
+   </div>
+
+
+   <div class="container">
+
+    <h2>Filtrar habitaciones</h2>
+
+    <form th:action="@{/admin/habitaciones/filtrar}" method="post">
+        <label for="HotelId">Selecciona hotel:</label>
+        <select name="HotelId" id="HotelId">
+            <option value="">Todos</option>
+            <option th:each="hotel : ${hotels}" th:value="${hotel.id}" th:text="${hotel.nom}"></option>
+        </select>
+
+        <label for="tipus">Selecciona tipo de habitación:</label>
+        <select name="tipus" id="tipus">
+            <option value="">Todos</option>
+            <option value="SIMPLE">SIMPLE</option>
+            <option value="DOBLE">DOBLE</option>
+            <option value="SUITE">SUITE</option>
+        </select>
+
+        <button type="submit">Filtrar</button>
+    </form>
+
+    <br>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Hotel</th>
+                <th>Habitación</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="habitacio : ${habitacions}">
+                <td th:text="${habitacio.hotel.nom}"></td>
+                <td th:text="${habitacio.tipus}"></td>
+                <td th:text="${habitacio.estat}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+</body>
+</html>
+

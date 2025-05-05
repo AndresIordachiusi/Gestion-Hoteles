@@ -52,7 +52,7 @@ public EmpleatController(EmpleatsRepository empleatsRepository, TascaRepository 
         
         
 
-        return "redirect:/empleats/llistat";
+        return "redirect:/admin/llistaempleats";
     }
 
 
