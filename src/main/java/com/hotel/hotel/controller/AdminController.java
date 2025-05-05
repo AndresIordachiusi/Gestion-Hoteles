@@ -28,14 +28,16 @@ public class AdminController {
     private FacturaRepository facturaRepository;
     private ReservaRepository reservaRepository;
     private ClientsRepository clientsRepository;
+    private EmpleatsRepository empleatsRepository;
 
-   public AdminController(ReservaRepository reservaRepository, HabitacioRepository habitacioRepository, UsuariRepository usuariRepository, HotelRepository hotelRepository, FacturaRepository facturaRepository, ClientsRepository clientsRepository) {   
+   public AdminController(ReservaRepository reservaRepository, HabitacioRepository habitacioRepository, UsuariRepository usuariRepository, HotelRepository hotelRepository, FacturaRepository facturaRepository, ClientsRepository clientsRepository, EmpleatsRepository empleatsRepository) {   
        this.reservaRepository = reservaRepository;
        this.habitacioRepository = habitacioRepository;
        this.usuariRepository = usuariRepository;
        this.hotelRepository = hotelRepository;
        this.facturaRepository = facturaRepository;
        this.clientsRepository = clientsRepository;
+       this.empleatsRepository = empleatsRepository;
    }
 
    @GetMapping("admin/dashboard")
@@ -163,5 +165,74 @@ public String actualitzarReserva(@PathVariable Long id, @ModelAttribute Reserva 
        reservaRepository.delete(reserva);
        return "redirect:/"; 
    }
+
+
+@GetMapping("/admin/empleadosdash")
+public String showEmpleats(Model model) {
+
+    return "admin/empleadosdash";
+
+}
+
+@GetMapping("/admin/empleat/editar/{id}")
+public String EditarEmpleat(@PathVariable Long id, Model model) {
+
+    Empleat empleat = empleatsRepository.findById(id).orElse(null);
+    model.addAttribute("empleat", empleat);
+    return "admin/editarEmpleat";
+}
+
+@PostMapping("/admin/empleat/actualitzar/{id}")
+public String actualitzarEmpleat(@PathVariable Long id, @ModelAttribute Empleat empleadoactualizado) {
+    Empleat empleat = empleatsRepository.findById(id).orElse(null);
+    if (empleat != null) {
+        empleat.setNom(empleadoactualizado.getNom());
+        empleat.setCognom(empleadoactualizado.getCognom());
+        empleat.setAdreça(empleadoactualizado.getAdreça());
+        empleat.setTelefon(empleadoactualizado.getTelefon());
+        empleat.setEmail(empleadoactualizado.getEmail());
+        empleat.setLlocFeina(empleadoactualizado.getLlocFeina());
+
+        empleatsRepository.save(empleat);
+    }
+    return "redirect:/admin/empleadosdash";
+}
+
+@PostMapping("/admin/empleat/eliminar/{id}")
+public String eliminarEmpleat(@PathVariable Long id) {
+    Optional<Empleat> empleatOpt = empleatsRepository.findById(id);
+    if (empleatOpt.isPresent()) {
+        Empleat empleat = empleatOpt.get();
+        empleatsRepository.delete(empleat);
+    }
+    return "redirect:/admin/empleadosdash";
+
+}
+
+@PostMapping("/admin/empleat/roladmin/{id}")    
+public String actualitzarRolAdmin(@PathVariable Long id) {
+    Optional<Empleat> empleatOpt = empleatsRepository.findById(id);
+        Empleat empleat = empleatOpt.get();
+        Usuari usuari = new Usuari();
+
+
+        usuari.setActiu(true);
+        usuari.setEmail(empleat.getEmail());
+        usuari.setPassword("secret");
+        usuari.setRol("ROLE_ADMIN");
+        usuari.setUsername(empleat.getNom());
+        
+        
+        usuari = usuariRepository.save(usuari);
+        empleat.setUsuari(usuari);
+
+
+        empleatsRepository.save(empleat);
+        
     
+    return "redirect:/admin/empleadosdash";
+}
+
+
+
 }

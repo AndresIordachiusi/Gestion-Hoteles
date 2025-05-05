@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 //import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.hotel.hotel.model.*;
 import com.hotel.hotel.repository.EmpleatsRepository;
@@ -35,10 +36,25 @@ public EmpleatController(EmpleatsRepository empleatsRepository, TascaRepository 
     model.addAttribute("empleats", empleats);
     model.addAttribute("tasques", tasques);
     return "empleats/llistat"; 
-
-
-    
 }
+
+@GetMapping("/altaempleat")
+    public String altaempleat(Model model) {
+        List<Tasca> tasques = tascaRepository.findAll();
+        model.addAttribute("tasques", tasques);
+        model.addAttribute("empleat", new Empleat());
+        return "FORMULARIS/altaempleat";
+    }
+
+    @PostMapping("/registrarEmpleat")
+    public String registreEmpleat(Empleat empleat) {
+        empleatsRepository.save(empleat);
+        
+        
+
+        return "redirect:/empleats/llistat";
+    }
+
 
 
 }

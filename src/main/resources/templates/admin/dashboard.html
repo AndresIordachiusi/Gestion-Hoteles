@@ -14,12 +14,12 @@
 
 
        <div class="logo">
-           <a th:href="@{dashboard}">Hotel Iorda</a>
+           <a th:href="@{/}">Hotel Iorda</a>
        </div>
        <div class="navbar">
         <a th:href="@{/}">Inicio</a>
-        <a href="#home">Gestionar empleados</a>
-        <a href="#about">Gestionar tareas</a>
+        <a th:href="@{/admin/empleadosdash}">Gestionar empleados</a>
+        <a th:href="@{/empleats/tasques}">Gestionar tareas</a>
         <a th:href="@{/admin/reserves}">Gestionar reservas</a>
         <a href="#contact">Gestionar clientes</a>
        </div>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+
+
+   <title>Gestor Administrador</title>
+</head>
+<body>
+  
+   <div class="navbar-container">
+
+
+       <div class="logo">
+           <a th:href="@{dashboard}">Hotel Iorda</a>
+       </div>
+       <div class="navbar">
+        <a th:href="@{/}">Inicio</a>
+        <a th:href="@{/altaempleat}">Dar de alta empleado</a>
+        <a th:href="@{/empleats/llistat}">Lista de empleados</a>
+        <a th:href="@{/}">Eliminar empleado</a>
+        <a href="#about">Modificar empleado</a>
+       </div>
+    
+       <form th:action="@{/logout}" method="POST">
+
+        <button type="submit">Cerrar sesión</button>
+       
+       </form>
+
+   </div>
+
+
+   <br>
+
+
+
+
+
+
+   <h1 class="title-portada">Gestión de Empleados</h1>
+  
+</body>
+</html>
+

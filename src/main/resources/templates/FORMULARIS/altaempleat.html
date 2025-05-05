@@ -7,56 +7,56 @@
 </head>
 <body>
 
-   <div class="navbar-container">
+    <div class="navbar-container">
 
 
-      <div class="logo">
-          <a th:href="@{altaempleat}">Hoteles Iorda</a>
-      </div>
-      <div class="navbar">
-          <a href="#home">Inicio</a>
-          <a href="#about">Acerca</a>
-          <a href="#services">Servicios</a>
-          <a href="#contact">Contacto</a>
-      </div>
-      <button class="account-button"><a th:href="@{/login}">Log in</a></button>
-  </div>
+        <div class="logo">
+            <a th:href="@{altaClient}">Hoteles Iorda</a>
+        </div>
+        <div class="navbar">
+            <a th:href="@{/}">Inicio</a>
+            <a href="#about">Acerca</a>
+            <a href="#services">Servicios</a>
+            <a href="#contact">Contacto</a>
+        </div>
+        <button class="account-button"><a th:href="@{/login}">Iniciar sesión</a></button>
+    </div>
 
 
    <h2>Dar de alta Empleado</h2>
    <form th:action="@{/registrarEmpleat}" method="post" th:object="${empleat}" class="altaempleat">
       
     <div class="mitad1">
-       <label>Nom:</label>
+       <label>Nombre:</label>
        <input type="text" th:field="*{nom}" required><br>
 
-       <label>Cognom:</label>
+       <label>Apellido:</label>
        <input type="text" th:field="*{cognom}" required><br>
 
-       <label>Adreça:</label>
+       <label>Dirección:</label>
        <input type="text" th:field="*{adreça}" required><br>
 
-       <label>Document Identitat:</label>
+       <label>Documento de identidad:</label>
        <input type="text" th:field="*{document_identitat}" required><br>
 
-       <label>Data Naixement:</label>
+       <label>Fecha de nacimiento:</label>
        <input type="date" th:field="*{data_naixement}" required><br>
     </div>
 
     <div class="mitad2">
-       <label>Telèfon:</label>
+       <label>Teléfono:</label>
        <input type="text" th:field="*{telefon}" required><br>
 
        <label>Email:</label>
        <input type="email" th:field="*{email}" required><br>
 
-       <label>Lloc Feina:</label>
+       <label>Puesto de trabajo:</label>
        <input type="text" th:field="*{llocFeina}" required><br>
 
-       <label>Data Contractació:</label>
+       <label>Fecha de contratación:</label>
        <input type="date" th:field="*{data_contractacio}" required><br>
 
-       <label>Salari Brut:</label>
+       <label>Salario bruto:</label>
        <input type="number" step="0.01" th:field="*{salariBrut}" required><br>
 
        <label for="estat">Estado Laboral:</label>
@@ -66,13 +66,13 @@
            <option value="PERMIS">PERMIS</option>
        </select><br>
 
-       <label for="tasques">Tasques asignades:</label><br>
+       <label for="tasques">Tareas asignadas:</label><br>
        <select id="tasques" name="tasques" th:field="*{tasques}" multiple required>
            <option th:each="tasca : ${tasques}" th:value="${tasca.id}" th:text="${tasca.descripcio}"></option>
        </select><br>
     </div>
 
-    <button type="submit">Donar alta empleat</button>
+    <button type="submit">Dar alta a empleado</button>
    </form>
 </body>
 </html>

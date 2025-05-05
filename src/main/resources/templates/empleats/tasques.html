@@ -10,6 +10,28 @@
 
 
    <div class="container">
+
+
+    <form th:action="@{/empleats/asignartasca}" method="post">
+        
+        <select name="empleatId">
+            <option th:each="emp : ${empleat}"
+                    th:value="${emp.getId}"
+                    th:text="${emp.nom + ' ' + emp.cognom}">
+            </option>
+        </select>
+        
+            <select name="tascaId">
+                <option th:each="tas : ${tasca}"
+                        th:value="${tas.getId}"
+                        th:text="${tas.getDescripcio}">
+                </option>
+            </select>
+            <button type="submit">Asignar tarea</button>
+            
+</form>
+
+
        <table class="tasques-list">
            <thead>
                <tr>

@@ -50,22 +50,6 @@ public class FormulariController {
     }
  
 
-    @GetMapping("/altaempleat")
-    public String altaempleat(Model model) {
-        List<Tasca> tasques = tascaRepository.findAll();
-        model.addAttribute("tasques", tasques);
-        model.addAttribute("empleat", new Empleat());
-        return "FORMULARIS/altaempleat";
-    }
-
-    @PostMapping("/registrarEmpleat")
-    public String registreEmpleat(Empleat empleat) {
-        empleatsRepository.save(empleat);
-        
-        
-
-        return "redirect:/empleats/llistat";
-    }
 
     @GetMapping("/altaClient")
     public String registreClient(Model model) {
