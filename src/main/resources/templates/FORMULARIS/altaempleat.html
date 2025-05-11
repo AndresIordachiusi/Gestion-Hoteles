@@ -14,12 +14,15 @@
             <a th:href="@{altaClient}">Hoteles Iorda</a>
         </div>
         <div class="navbar">
-            <a th:href="@{/}">Inicio</a>
-            <a href="#about">Acerca</a>
-            <a href="#services">Servicios</a>
-            <a href="#contact">Contacto</a>
+        <a th:href="@{/}">Inicio</a>
+       <a th:href="@{/altaempleat}">Dar de alta empleado</a>
+       <a th:href="@{/empleats/llistat}">Lista de empleados</a>
         </div>
-        <button class="account-button"><a th:href="@{/login}">Iniciar sesión</a></button>
+        <form th:action="@{/logout}" method="POST">
+
+        <button type="submit">Cerrar sesión</button>
+       
+       </form>
     </div>
 
 
