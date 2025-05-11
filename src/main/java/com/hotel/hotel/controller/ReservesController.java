@@ -2,6 +2,7 @@ package com.hotel.hotel.controller;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
@@ -318,8 +319,15 @@ public String eliminarReserva(@PathVariable Long id, HttpSession session) {
 
     Optional<Reserva> reservaOpt = reservaRepository.findByIdAndClient_Id(id, client.getId());
 
+    if (reservaOpt.isPresent()) {
 
-    Reserva reserva = reservaOpt.get();
+        Reserva reserva = reservaOpt.get();
+        LocalDate ahora = LocalDate.now();
+        LocalDate limite = reserva.getData_inici().minusDays(1);
+        if (!ahora.isBefore(limite)) {
+            return "redirect:/reserves/error";
+    }
+    
 
 
 
@@ -329,10 +337,16 @@ public String eliminarReserva(@PathVariable Long id, HttpSession session) {
 
 
     reservaRepository.delete(reserva);
+   
+    }
     return "redirect:/"; 
-}
 
 
 
 }
 
+@GetMapping("/reserves/error")
+public String errorCancelarReserva(){
+return "/reserves/error";
+}
+}

@@ -33,13 +33,20 @@
 
    <br>
 
-
-
-
-
-
    <h1 class="title-portada">Gestión de Empleados</h1>
-  
+  <div class="dashboard-cards">
+    <div class="card">
+        <h3>Dar de alta empleado</h3>
+        <p>Registra nuevos empleados en el sistema y asígnales su rol correspondiente.</p>
+        <a th:href="@{/altaempleat}" class="card-button">Alta empleado</a>
+    </div>
+
+    <div class="card">
+        <h3>Lista de empleados</h3>
+        <p>Consulta la información detallada de todos los empleados actuales del hotel.</p>
+        <a th:href="@{/admin/llistaempleats}" class="card-button">Ver empleados</a>
+    </div>
+</div>
 </body>
 </html>
 

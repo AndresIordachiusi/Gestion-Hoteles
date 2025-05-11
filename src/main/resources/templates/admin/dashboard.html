@@ -35,13 +35,32 @@
 
    <br>
 
-
-
-
-
-
    <h1 class="title-portada">Gestión de Administrador</h1>
-  
+  <div class="dashboard-cards">
+    <div class="card">
+        <h3>Gestionar Empleados</h3>
+        <p>Agrega, edita o elimina la información de los empleados del hotel.</p>
+        <a th:href="@{/admin/empleadosdash}" class="card-button">Ir a empleados</a>
+    </div>
+
+    <div class="card">
+        <h3>Gestionar Tareas</h3>
+        <p>Asigna y supervisa las tareas pendientes del equipo.</p>
+        <a th:href="@{/admin/empleats/tasques}" class="card-button">Ver tareas</a>
+    </div>
+
+    <div class="card">
+        <h3>Gestionar Reservas</h3>
+        <p>Consulta, modifica o elimina las reservas realizadas por los clientes.</p>
+        <a th:href="@{/admin/reserves}" class="card-button">Ver reservas</a>
+    </div>
+
+    <div class="card">
+        <h3>Mostrar Habitaciones</h3>
+        <p>Visualiza la disponibilidad y detalles de las habitaciones.</p>
+        <a th:href="@{/admin/habitaciones}" class="card-button">Ver habitaciones</a>
+    </div>
+</div>
 </body>
 </html>
 
