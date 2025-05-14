@@ -31,8 +31,10 @@ public class AdminController {
     private ClientsRepository clientsRepository;
     private EmpleatsRepository empleatsRepository;
     private TascaRepository tascaRepository;
+    private ValoracioRepository valoracioRepository;
 
-   public AdminController(ReservaRepository reservaRepository, HabitacioRepository habitacioRepository, UsuariRepository usuariRepository, HotelRepository hotelRepository, FacturaRepository facturaRepository, ClientsRepository clientsRepository, EmpleatsRepository empleatsRepository, TascaRepository tascaRepository) {   
+   public AdminController(ReservaRepository reservaRepository, HabitacioRepository habitacioRepository, UsuariRepository usuariRepository, HotelRepository hotelRepository, FacturaRepository facturaRepository, ClientsRepository clientsRepository, EmpleatsRepository empleatsRepository, TascaRepository tascaRepository,
+   ValoracioRepository valoracioRepository) {   
        this.reservaRepository = reservaRepository;
        this.habitacioRepository = habitacioRepository;
        this.usuariRepository = usuariRepository;
@@ -41,6 +43,7 @@ public class AdminController {
        this.clientsRepository = clientsRepository;
        this.empleatsRepository = empleatsRepository;
        this.tascaRepository = tascaRepository;
+       this.valoracioRepository = valoracioRepository;
    }
 
    @GetMapping("admin/dashboard")
@@ -275,5 +278,25 @@ public String actualitzarRolAdmin(@PathVariable Long id) {
     }
 
 
+    @GetMapping("/admin/valoracions")
+    public String veureResenyes(Model model) {
+        List<Valoracio> valoracions = valoracioRepository.findAll();
 
+        model.addAttribute("valoracions", valoracions);
+        return "admin/valoracions";
+    }
+
+    @PostMapping("/admin/valoracions/llegida/{id}")
+    public String llegirvaloracio(@PathVariable Long id, Model model){
+ 
+     Optional <Valoracio> valoracio = valoracioRepository.findById(id);
+ 
+ 
+     Valoracio val = valoracio.get();
+     val.setLlegit(true);
+ 
+     valoracioRepository.save(val);
+ 
+     return "redirect:/";
+    }
 }

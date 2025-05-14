@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valoraciones de los clientes</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <h1>Reseñas de los clientes: <br></h1>
+    <div th:if="${#lists.isEmpty(valoracions)}">No hay reseñas aún.</div>
+    <ul th:each="val : ${valoracions}">
+        <li>
+            <strong th:text="${val.client.usuari.email}"></strong> 
+            <span th:text="${val.data_creacio}"></span> 
+            <span th:text="${val.hora_creacio}"></span> 
+            <p th:text="${val.comentari}"></p>
+            <form th:action="@{/admin/valoracions/llegida/{id}(id=${val.id})}" method="post">
+                <button type="submit">Marcar como leída</button>
+            </form>
+            
+        </li>
+    </ul>
+</body>
+</html>

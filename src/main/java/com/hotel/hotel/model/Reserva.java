@@ -58,11 +58,17 @@ private Habitacio habitacio;
 @JoinColumn(name = "factura_id", nullable = false)
 private Factura factura;
 
+
+@OneToOne
+private Valoracio valoracio;
+
+
+
 public Reserva() {
 }
 
 public Reserva(Long id, LocalDate data_reserva, LocalDate data_inici, LocalDate data_fi, TipusReserva tipus_reserva, int tipus_iva,
-        double preu_total_reserva, Client client, Habitacio habitacio, Factura factura) {
+        double preu_total_reserva, Client client, Habitacio habitacio, Factura factura, Valoracio valoracio) {
     this.id = id;
     this.data_reserva = data_reserva;
     this.data_inici = data_inici;
@@ -73,6 +79,7 @@ public Reserva(Long id, LocalDate data_reserva, LocalDate data_inici, LocalDate 
     this.client = client;
     this.habitacio = habitacio;
     this.factura = factura;
+    this.valoracio = valoracio;
 }
 
 public Long getId() {
@@ -153,6 +160,14 @@ public Factura getFactura() {
 
 public void setFactura(Factura factura) {
     this.factura = factura;
+}
+
+public Valoracio getValoracio() {
+    return valoracio;
+}
+
+public void setValoracio(Valoracio valoracio) {
+    this.valoracio = valoracio;
 }
 
 

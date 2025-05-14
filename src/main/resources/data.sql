@@ -1,6 +1,7 @@
 DELETE FROM empleats_tasques;
 DELETE FROM tasques;
 
+DELETE FROM valoracions;
 DELETE FROM reserves;
 DELETE FROM clients;
 DELETE FROM empleats;

@@ -47,6 +47,7 @@
                <th>Numero de habitación</th>
                <th>Cancelar reserva</th>
                <th>Ver factura</th>
+               <th>Valoracion</th>
            </tr>
     </thead>  
 
@@ -66,6 +67,9 @@
                     <a th:href="@{/facturas/facturas/{id}(id=${reserva.id})}"><button type="submit">Factura</button>
                   </a>
                  </td>
+               </td>
+               <td>
+                <a th:href="@{/valoracions/crear}"><button type="submit">Dejar una valoracion!</button>
                </td>
            </tr>
     
